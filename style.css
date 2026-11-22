@@ -296,7 +296,7 @@ p{color:#504950}
  .format-cta{flex-direction:column;align-items:stretch;padding:28px 23px}
  .format-cta h2{font-size:42px}
  .format-cta p{font-size:14px}
- ..format-cta .btn{width:100%}
+ .format-cta .btn{width:100%}
  .good-to-know{padding:72px 0 72px}
  .faq-grid{grid-template-columns:1fr;gap:25px}
  .questions summary{font-size:16px}
