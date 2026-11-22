@@ -311,3 +311,17 @@ p{color:#504950}
  .product-card-v4 p{min-height:0}
  .v4-hero h1{font-size:51px}
 }
+
+/* Hot Ube Latte hero — locally hosted concept, mobile crop and visible claim provenance */
+.v4-hero .hero-photo{background:#ead7cb}
+.v4-hero .hero-photo>img{object-position:50% 53%;filter:saturate(.94) contrast(.98)}
+.v4-hero .hero-photo:after{background:linear-gradient(180deg,rgba(23,14,27,.03) 63%,rgba(38,22,42,.4))}
+.hero-concept-notice{position:absolute;z-index:4;bottom:69px;left:24px;right:24px;color:#fff;background:rgba(41,25,48,.76);text-align:center;padding:9px 12px;font-size:10px;line-height:1.45;font-weight:700;letter-spacing:.05em;max-width:630px;margin-inline:auto}
+.v4-hero .hero-photo-label{bottom:24px}
+.v4-hero .photo-disclaimer{background:rgba(59,32,67,.76);color:#fff}
+@media(max-width:760px){
+ .v4-hero .hero-photo{height:93vw;min-height:430px}
+ .v4-hero .hero-photo>img{object-position:50% 43%}
+ .hero-concept-notice{bottom:60px;left:14px;right:14px;font-size:9px;letter-spacing:0;padding:8px 9px}
+ .v4-hero .hero-photo-label{bottom:20px}
+}

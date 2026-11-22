@@ -54,3 +54,10 @@ These eight are **names confirmed by the owner**, not independently verified sto
 - Eight photo-backed cards with distinct illustrative beverage imagery, descriptive name-derived cues, clear disclaimers, and prominent enquiry actions. **These are still third-party licensed editorial photographs, not actual product photographs.** Replace with approved photo shoot before commercial launch.
 - Correct Croillo to **Criollo** in customer-facing names, per latest owner editorial correction. Ingredient origins and caffeine/bestseller status remain unverified.
 - Increase typography contrast and interactive target sizes. No fabricated prices, health/ingredient assurances, checkout or inventory.
+
+## Hot-latte brand-image audit — November 22, 2026
+- The owner requested the latest hot Euro Blend Ube Latte concept render to replace an iced-drink hero. Original generated asset stored at `images/euroblend-hot-ube-concept.png` (1199 × 1312, 2.6 MB).
+- **Provenance**: Generated visual, not a genuine photograph of retail packaging or an actual prepared product. The box/sachet also depicts unverified "real ube", `20 g`, `10 sachets`, and instructions, so a visible concept/label disclaimer stays on the website. Earlier published Facebook Deep Ube post stated `10 × 25 g`, contradictory to generated artwork. Do not convert either into verified sales specifications.
+- **Serving method**: Prior Facebook screenshot says the Deep Ube product is suitable "Hot or iced"; this does *not* substantiate that the whole eight-flavor range is only hot coffee. The owner now prefers a HOT Ube Latte hero. Other variants' preparation methods remain unverified.
+- Removed the chilled iced beverage from the hero and put the approved hot steaming Ube Latte concept in its place. Updated alt text, provenance notice, and FAQ. Other flavor-card photos remain explicitly editorial references, not finished Euro Blend products.
+- Still pending: actual verified product photos/packaging, formula, label, compliance, and an authenticated visual browser QA. No payments or stock claims added.
