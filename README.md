@@ -67,3 +67,9 @@ These eight are **names confirmed by the owner**, not independently verified sto
 - Grid crop mapping exactly follows the eight owner-confirmed names in display order. Product names and Criollo spelling unchanged.
 - Trade-off: both new concept PNGs are about 2.6 MB each; reduce to WebP/AVIF when a verified lossless production asset-processing path is available. Product-grid sprite img is lazy-loaded and reused from one URL, limiting duplicate transfers.
 - Removed leftover third-party image attributions after replacing those sources, and added explicit generated-asset provenance.
+
+## Optimized on-site image assets (supersedes 2.6 MB PNG versions)
+- `images/euroblend-hot-hero.webp`: 1100 × 1204, 132 KB; generated packaging concept, displays a **hot** beverage.
+- `images/euroblend-eight-hot-flavors.webp`: 1536 × 1024, 141 KB; eight individually cropped hot serving concepts on one reusable sprite.
+- PNGs removed from repository to prevent bloated deployment. Modern WebP loads across current Chrome and Safari. They are still illustrative mockups, not photographed final merchandise.
+- The previous README references to PNG filenames document earlier revisions, not current production paths.
