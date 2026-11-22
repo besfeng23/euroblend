@@ -25,3 +25,11 @@ These images are loaded from images.pexels.com and credited in the footer. Repla
 
 ## Run
 Open \`index.html\` with a web server; static Vercel hosting requires no dependencies or build script.
+
+## Flavor collection update (November 22, 2026)
+- Published Facebook introduction: **Deep Ube** (3-in-1 Ube Latte; post mentions 10 × 25 g, subject to label verification).
+- Names visible in the company's cover packaging artwork: **Classic Ube**, **Ube Milk** (formulas and inventory unverified).
+- Owner mentioned **Ube with Chocolate** as an idea for a broader flavor lineup; site explicitly marks **Ube + Chocolate** as a *flavor exploration, not for sale*. Do not promote until owner confirms the SKU and availability.
+- Product listings are now photography-led with plain provenance notes; no artificial packaging or inaccurate product photographs, no checkout promises.
+- For additional flavors, use their owner-confirmed names and label data before adding sales links.
+- New Pexels editorial inspiration: Amirho3in Tavkoli, https://www.pexels.com/photo/purple-drink-with-ice-19154600/ ; Aida Shukuhi, https://www.pexels.com/pt-br/foto/comida-alimento-refeicao-cafeina-20205944/ .
