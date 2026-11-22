@@ -1,22 +1,27 @@
-# 1064 Euro Blend — Premium Website
+# 1064 Euro Blend — premium photography-led website
 
-Public marketing website for **1064 Euro Blend** and the **Ube Latte collection**.
+Production: https://euroblend.vercel.app/
+Repository: https://github.com/besfeng23/euroblend
 
-## Design and scope
-- Responsive single-page static site, no build dependencies, hosted on Vercel.
-- Branded editorial layout, illustrative sachet and drink visuals, accessible navigation and FAQs.
-- Publicly verifiable facts: name, product names shown in artwork, Deep Ube published post, Facebook ordering, location (Parañaque), phone and email.
-- **No online checkout, payment capture, stock promises, fabricated reviews or ingredient claims.** Contact buttons open the brand's Facebook page or an email draft.
-- **UBEVIA was only a naming suggestion, not an approved brand**; it is intentionally not used on the live site.
-- All sachet illustrations are **design concepts**, not verified photographs or a substitute for approved packaging/label artwork.
-- Classic Ube and Ube Milk are visible in packaging concept artwork, but availability is not confirmed.
+## November 22, 2026 visual redesign
+- Replaced CSS-illustrated cartoon sachets and cups with real, licensed photographic editorial imagery.
+- **Logo:** \`euroblend-mark.svg\` is a high-fidelity contour vectorisation of the exact lavender three-part swirl supplied by the owner in chat (original uploaded image, 1536 × 1536). The shape and lavender hue are preserved; the white background is not part of the symbol. No invented circular badge.
+- Independent responsive layout for consumer beverages: editorial serif typography, soft neutral ivory, lavender accents, cinematic photographic sections, clear order enquiry calls-to-action.
+- Euroblend remains the brand; “UBEVIA” is an unapproved naming idea and is deliberately NOT published.
 
-## Before enabling ecommerce
-1. Get brand owner's written approval of brand identity and copy.
-2. Obtain commercial-use original packshots and production-approved logo.
-3. Verify actual product SKUs, ingredients/allergens, sachet weight and pack counts (current Facebook materials conflict between 25 g and 30 g).
-4. Verify prices, inventory, order processing, payments, refunds, shipping and service areas.
-5. Publish required business and privacy disclosures before collecting personal data.
+## Image sources and limitations
+Images are third-party **Pexels free-to-use editorial lifestyle photographs**, not photographs of Euro Blend's actual product:
+- Blanca Isela — https://www.pexels.com/photo/purple-latte-art-on-wooden-table-35240181/
+- Sydney Sang — https://www.pexels.com/photo/close-up-of-hand-stirring-purple-drink-with-straw-30133568/
+- Bruna Corrêa — https://www.pexels.com/photo/barista-making-layered-latte-in-a-cafe-22873659/
+These images are loaded from images.pexels.com and credited in the footer. Replace with licensed **actual** Euro Blend product photos as soon as available. Refer to https://www.pexels.com/license/.
+
+## Product claims deliberately limited
+- “Deep Ube” announced publicly as 3-in-1 Ube Latte, 10 × 25 g in Facebook post; confirm physical label.
+- Classic Ube and Ube Milk appear in Facebook packaging artwork. Do not assume active inventory.
+- Facebook artwork shows inconsistent 25 g / 30 g values. No price, shipping, health, nutrition, ingredient, FDA registration, sales or payment guarantees invented.
+- No credit-card collection, cart, or fake reviews. CTAs open brand Facebook / public email.
+- Verify manufacturer, full labels, pricing, inventory, shipping, refunds, payment channels and customer privacy before checkout integration.
 
 ## Run
-Open index.html in a browser, or serve the folder with any static HTTP server. Vercel detects and serves the static assets without a build.
+Open \`index.html\` with a web server; static Vercel hosting requires no dependencies or build script.
