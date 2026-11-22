@@ -33,3 +33,17 @@ Open \`index.html\` with a web server; static Vercel hosting requires no depende
 - Product listings are now photography-led with plain provenance notes; no artificial packaging or inaccurate product photographs, no checkout promises.
 - For additional flavors, use their owner-confirmed names and label data before adding sales links.
 - New Pexels editorial inspiration: Amirho3in Tavkoli, https://www.pexels.com/photo/purple-drink-with-ice-19154600/ ; Aida Shukuhi, https://www.pexels.com/pt-br/foto/comida-alimento-refeicao-cafeina-20205944/ .
+
+## Owner-confirmed eight-flavor lineup
+Source: November 22, 2026 owner-supplied product names; preserve spelling exactly, particularly **Croillo**.
+
+1. Ube Latte
+2. Ube Milk
+3. Ube Classic
+4. Ube Macchiato
+5. Ube Vanilla
+6. Ube Salted Caramel
+7. Ube Croillo Cacao
+8. Ube Croillo Salted Caramel
+
+These eight are **names confirmed by the owner**, not independently verified stocked SKUs. The website displays all eight with enquiry links but makes no assumptions about current prices, recipes, ingredient origins, nutrition, manufacturing, or stock. Replace placeholder/editorial serving imagery with original approved product photographs when supplied. Earlier speculative "Ube + Chocolate" product card was retired because it is not on the definitive owner list. The lavender owner-provided swirl vector is unchanged. The visible brand is Euro Blend without 1064; existing email addresses intentionally retain their legacy digits.

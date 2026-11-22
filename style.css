@@ -98,3 +98,81 @@
  .flavor-card-visual{height:315px}
  .flavor-card h4{font-size:48px}
 }
+
+
+/* Eight-flavor premium editorial catalogue. Product names are owner-supplied; no unverified pack imagery. */
+.all-flavors{background:#fcfaf7;padding:120px 0 112px}
+.flavors-heading{display:grid;grid-template-columns:1.25fr .72fr;align-items:end;gap:100px;margin-bottom:43px}
+.flavors-heading h2{font-size:clamp(64px,7.6vw,108px);letter-spacing:-.065em;line-height:.92;margin:23px 0 0}
+.flavors-heading-right{padding-bottom:7px;max-width:420px}
+.flavor-edition{font-size:10px;letter-spacing:.2em;color:#795c83;font-weight:700}
+.flavors-heading-right p{font-size:14px;line-height:1.85;margin:20px 0}
+.flavors-heading-right .underlink{margin-top:0}
+.flavors-photo-banner{height:410px;position:relative;overflow:hidden;background:#b5a1ad}
+.flavors-photo-banner>img{height:100%;width:100%;object-fit:cover;object-position:center 49%;display:block;filter:saturate(.82) brightness(.75)}
+.flavors-photo-banner:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(34,18,39,.6),rgba(34,18,39,.08) 76%);pointer-events:none}
+.flavors-photo-overlay{position:absolute;z-index:2;left:6%;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:22px;max-width:580px}
+.flavors-photo-overlay span{color:#f4dfea;font-size:10px;letter-spacing:.22em;font-weight:700}
+.flavors-photo-overlay strong{color:#fff;font-family:var(--serif);font-size:clamp(56px,6vw,89px);font-weight:500;line-height:.9;letter-spacing:-.04em}
+.flavors-photo-overlay em{font-weight:400;color:#ead4ec}
+.flavors-photo-caption{position:absolute;bottom:15px;right:20px;z-index:2;font-size:8px;letter-spacing:.08em;color:#f8edf8;background:rgba(37,20,44,.58);padding:7px 9px}
+.flavors-grid-header{display:flex;justify-content:space-between;align-items:end;gap:45px;padding-top:83px;padding-bottom:34px}
+.flavors-grid-header h3{font-family:var(--serif);font-size:clamp(50px,5.3vw,75px);font-weight:500;letter-spacing:-.063em;line-height:1;margin:17px 0 0}
+.flavors-grid-header h3 em{color:#86669b}
+.flavors-grid-header>p{max-width:330px;font-size:12px;line-height:1.8;margin:0 0 4px}
+.flavor-tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}
+.flavor-tile{--card:#eee6ec;--marker:#9277a7;min-width:0;min-height:366px;overflow:hidden;position:relative;border:1px solid rgba(88,52,91,.12);background:linear-gradient(145deg,#f9f5f7,var(--card));display:flex;flex-direction:column;padding:21px 20px 22px;isolation:isolate;transition:transform .24s,box-shadow .24s}
+.flavor-tile:hover{transform:translateY(-3px);box-shadow:0 18px 36px rgba(55,30,61,.08)}
+.flavor-tile:before{position:absolute;content:"";height:210px;width:210px;border:1px solid rgba(119,85,135,.14);border-radius:50%;top:24px;right:-76px;pointer-events:none}
+.flavor-tile:after{position:absolute;content:"";height:180px;width:180px;border:1px solid rgba(119,85,135,.1);border-radius:50%;top:41px;right:-63px;pointer-events:none}
+.flavor-tile-head{position:relative;z-index:2;display:flex;justify-content:space-between;gap:9px;align-items:start}
+.flavor-tile-index{font-family:var(--serif);font-size:25px;line-height:1;color:#674b71}
+.flavor-tile-kicker{font-weight:700;font-size:8px;color:#927991;letter-spacing:.12em;text-align:right;line-height:1.4}
+.flavor-tile-mark{position:absolute;z-index:0;right:14px;top:85px;width:125px;height:135px;opacity:.14;transform:rotate(-12deg);pointer-events:none}
+.flavor-tile-copy{position:relative;z-index:2;margin-top:auto}
+.flavor-tile h3{font-family:var(--serif);font-size:clamp(35px,3.25vw,49px);font-weight:500;line-height:.98;letter-spacing:-.045em;margin:0 0 14px;overflow-wrap:break-word;color:#35233c}
+.flavor-tile p{font-size:11px;line-height:1.65;color:#6f6172;min-height:35px;margin:0 0 23px;max-width:240px}
+.flavor-tile-link{border-top:1px solid rgba(92,54,99,.22);padding-top:15px;display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:10px;font-weight:700;color:#5c3c6a;line-height:1.5}
+.flavor-tile-link span{font-size:18px}
+.flavor-tile--latte{--card:#ded0e2}
+.flavor-tile--milk{--card:#eee0ea}
+.flavor-tile--classic{--card:#e5dce8}
+.flavor-tile--macchiato{--card:#e5d9d2}
+.flavor-tile--vanilla{--card:#f2e9df}
+.flavor-tile--caramel{--card:#e9d9ce}
+.flavor-tile--cacao{--card:#dfcfd8}
+.flavor-tile--croillo{--card:#e8d6dd}
+.flavors-contact{margin-top:38px;padding:34px 39px;background:#ede4ed;display:flex;justify-content:space-between;align-items:center;gap:30px;border:1px solid #e5dbe5}
+.flavors-contact .kicker{font-size:9px}
+.flavors-contact h3{font-family:var(--serif);font-size:42px;font-weight:500;letter-spacing:-.05em;line-height:.98;margin:12px 0}
+.flavors-contact p{font-size:12px;margin:0}
+.flavors-contact .btn{white-space:nowrap}
+.all-flavors .availability-note{margin-top:23px;font-size:10px;color:#7b7078;line-height:1.85}
+@media(max-width:1120px){
+ .flavors-heading{gap:52px}
+ .flavor-tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}
+ .flavor-tile{min-height:320px;padding:24px}
+ .flavor-tile h3{font-size:clamp(39px,4.1vw,55px)}
+}
+@media(max-width:760px){
+ .all-flavors{padding:80px 0 77px}
+ .flavors-heading{grid-template-columns:1fr;gap:23px;margin-bottom:32px}
+ .flavors-heading h2{font-size:clamp(61px,12vw,88px)}
+ .flavors-heading-right{padding:0}
+ .flavors-heading-right p{font-size:13px;margin:13px 0}
+ .flavors-photo-banner{height:390px}
+ .flavors-photo-overlay{left:22px;right:22px}
+ .flavors-photo-overlay strong{font-size:clamp(55px,11vw,76px)}
+ .flavors-photo-caption{right:10px;left:10px;bottom:10px;text-align:center;font-size:7px}
+ .flavors-grid-header{display:block;padding:66px 0 28px}
+ .flavors-grid-header h3{font-size:59px}
+ .flavors-grid-header>p{max-width:440px;margin-top:18px}
+ .flavor-tiles{grid-template-columns:1fr;gap:14px}
+ .flavor-tile{min-height:270px;padding:23px}
+ .flavor-tile h3{font-size:clamp(43px,10.8vw,65px)}
+ .flavor-tile-mark{right:15px;top:55px;opacity:.13}
+ .flavor-tile p{max-width:320px;margin-bottom:20px}
+ .flavors-contact{padding:28px 23px;flex-direction:column;align-items:stretch;margin-top:28px}
+ .flavors-contact .btn{width:100%}
+ .flavors-contact h3{font-size:38px}
+}
