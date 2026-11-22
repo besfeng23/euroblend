@@ -333,3 +333,33 @@ p{color:#504950}
 @media(max-width:1200px){.product-card-v4__visual{aspect-ratio:3 / 4;height:auto}}
 @media(max-width:760px){.product-card-v4__visual{aspect-ratio:3 / 4;height:auto}}
 @media(max-width:390px){.product-card-v4__visual{aspect-ratio:3 / 4;height:auto}}
+
+/* 2026-11-22: product-first eight-flavor packaging collection. Entire collage stays visible. */
+.hero.v4-hero.packaging-hero{display:block;min-height:0;max-height:none;background:#fbf8f4}
+.packaging-hero .hero-copy{width:100%;padding:clamp(50px,5vw,85px) 24px 38px;text-align:center}
+.packaging-hero .hero-copy-inner{width:min(970px,100%);max-width:970px;margin:0 auto}
+.packaging-hero .overline{justify-content:center}
+.packaging-hero h1{font-size:clamp(55px,6.7vw,105px);line-height:.95;margin:24px 0 25px}
+.packaging-hero .hero-copy p{max-width:715px;margin:0 auto 25px}
+.packaging-hero .hero-ctas{justify-content:center}
+.packaging-hero .hero-footer{display:none}
+.packaging-hero .hero-photo{width:min(1470px,calc(100% - 64px));height:auto;min-height:0;margin:0 auto 32px;padding:0;aspect-ratio:auto;background:transparent;display:block;overflow:visible}
+.packaging-hero .hero-photo>img{position:static;width:100%;height:auto;object-fit:contain;object-position:center;filter:none;max-width:100%;display:block}
+.packaging-hero .hero-photo:after{display:none}
+.packaging-hero .hero-concept-notice{position:static;max-width:none;margin:10px auto 0;padding:0 8px 3px;background:transparent;color:#716378;text-align:center;font-size:10px;letter-spacing:.085em;font-weight:600;line-height:1.5}
+.product-card-v4__visual{aspect-ratio:418 / 470.5;height:auto;background:#eaddd0}
+.product-card-v4__visual img.packaging-sprite{position:absolute;inset:auto;width:400%;height:200%;max-width:none;object-fit:fill;object-position:initial;filter:none;transform:none;transition:none}
+.product-card-v4:hover .product-card-v4__visual img.packaging-sprite{transform:none}
+.product-card-v4__visual:after{background:linear-gradient(180deg,rgba(21,11,27,.10),transparent 34%,transparent 75%,rgba(21,11,27,.20))}
+.product-card-v4__no{top:9px;left:10px;font-size:23px}
+.product-card-v4__preview{font-size:8px;bottom:8px;left:10px;letter-spacing:.07em}
+@media(max-width:760px){
+ .hero.v4-hero.packaging-hero{display:block;min-height:0}
+ .packaging-hero .hero-copy{padding:45px 18px 28px}
+ .packaging-hero h1{font-size:clamp(49px,10vw,72px);margin:20px 0 22px}
+ .packaging-hero .hero-copy p{font-size:15px}
+ .packaging-hero .hero-photo{width:calc(100% - 12px);min-height:0;height:auto;margin-bottom:24px}
+ .packaging-hero .hero-photo>img{width:100%;height:auto;object-fit:contain}
+ .packaging-hero .hero-concept-notice{font-size:9px;letter-spacing:0;padding:0 10px}
+ .product-card-v4__visual{aspect-ratio:418 / 470.5;height:auto}
+}
