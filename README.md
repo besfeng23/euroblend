@@ -47,3 +47,10 @@ Source: November 22, 2026 owner-supplied product names; preserve spelling exactl
 8. Ube Croillo Salted Caramel
 
 These eight are **names confirmed by the owner**, not independently verified stocked SKUs. The website displays all eight with enquiry links but makes no assumptions about current prices, recipes, ingredient origins, nutrition, manufacturing, or stock. Replace placeholder/editorial serving imagery with original approved product photographs when supplied. Earlier speculative "Ube + Chocolate" product card was retired because it is not on the definitive owner list. The lavender owner-provided swirl vector is unchanged. The visible brand is Euro Blend without 1064; existing email addresses intentionally retain their legacy digits.
+
+## Product-first credibility pass
+- Remove the unrelated red-apron barista photo, near-black hand-with-ring photo, repetitive introduction, and repeated hero image block.
+- Move collection immediately after concise sachet/ordering facts; retain FAQ and contact sections.
+- Eight photo-backed cards with distinct illustrative beverage imagery, descriptive name-derived cues, clear disclaimers, and prominent enquiry actions. **These are still third-party licensed editorial photographs, not actual product photographs.** Replace with approved photo shoot before commercial launch.
+- Correct Croillo to **Criollo** in customer-facing names, per latest owner editorial correction. Ingredient origins and caffeine/bestseller status remain unverified.
+- Increase typography contrast and interactive target sizes. No fabricated prices, health/ingredient assurances, checkout or inventory.
