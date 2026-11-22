@@ -61,3 +61,9 @@ These eight are **names confirmed by the owner**, not independently verified sto
 - **Serving method**: Prior Facebook screenshot says the Deep Ube product is suitable "Hot or iced"; this does *not* substantiate that the whole eight-flavor range is only hot coffee. The owner now prefers a HOT Ube Latte hero. Other variants' preparation methods remain unverified.
 - Removed the chilled iced beverage from the hero and put the approved hot steaming Ube Latte concept in its place. Updated alt text, provenance notice, and FAQ. Other flavor-card photos remain explicitly editorial references, not finished Euro Blend products.
 - Still pending: actual verified product photos/packaging, formula, label, compliance, and an authenticated visual browser QA. No payments or stock claims added.
+
+## Hot flavor-grid image update
+- Replaced all eight third-party / iced stock-photo cards with individual crops from one user-approved-direction 4 × 2 collage: `images/euroblend-eight-hot-flavors.png`, 1536 × 1024, 2.6 MB. Each tile is a distinct photorealistic **hot** beverage concept, not genuine product photography.
+- Grid crop mapping exactly follows the eight owner-confirmed names in display order. Product names and Criollo spelling unchanged.
+- Trade-off: both new concept PNGs are about 2.6 MB each; reduce to WebP/AVIF when a verified lossless production asset-processing path is available. Product-grid sprite img is lazy-loaded and reused from one URL, limiting duplicate transfers.
+- Removed leftover third-party image attributions after replacing those sources, and added explicit generated-asset provenance.

@@ -325,3 +325,11 @@ p{color:#504950}
  .hero-concept-notice{bottom:60px;left:14px;right:14px;font-size:9px;letter-spacing:0;padding:8px 9px}
  .v4-hero .hero-photo-label{bottom:20px}
 }
+
+/* Eight individually cropped hot-cup photographs from one 4x2 concept sheet. */
+.product-card-v4__visual{aspect-ratio:3 / 4;height:auto;background:#eaddd0}
+.product-card-v4__visual img.hot-concept-sprite{position:absolute;width:400%;height:200%;max-width:none;object-fit:fill;object-position:initial;filter:saturate(.96) contrast(1.01);transform:none;transition:none}
+.product-card-v4:hover .product-card-v4__visual img.hot-concept-sprite{transform:none}
+@media(max-width:1200px){.product-card-v4__visual{aspect-ratio:3 / 4;height:auto}}
+@media(max-width:760px){.product-card-v4__visual{aspect-ratio:3 / 4;height:auto}}
+@media(max-width:390px){.product-card-v4__visual{aspect-ratio:3 / 4;height:auto}}
