@@ -1,4 +1,4 @@
-# 1064 Euro Blend — premium photography-led website
+# Euro Blend — premium photography-led website
 
 Production: https://euroblend.vercel.app/
 Repository: https://github.com/besfeng23/euroblend
