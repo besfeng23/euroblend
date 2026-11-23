@@ -13,16 +13,16 @@ if(menu&&nav){
 const year=$('#year');if(year)year.textContent=String(new Date().getFullYear());
 const flavors=[
  {key:'latte',name:'Ube Latte',html:'Ube<br>Latte',eyebrow:'THE SIGNATURE',description:'A latte-inspired expression of a familiar ube favorite.',image:'ube-latte',width:1122,family:'cafe'},
- {key:'milk',name:'Ube Milk',html:'Ube<br>Milk',eyebrow:'A GENTLER MOMENT',description:'A milk-inspired pairing in the Euro Blend ube collection.',image:'ube-milk',width:1000,family:'velvet'},
- {key:'classic',name:'Ube Classic',html:'Ube<br>Classic',eyebrow:'FAMILIAR AT HEART',description:'The classic expression of the ube flavor.',image:'ube-classic',width:1000,family:'velvet'},
+ {key:'milk',name:'Ube Milk',html:'Ube<br>Milk',eyebrow:'A GENTLER MOMENT',description:'A milk-inspired pairing in the Euro Blend ube collection.',family:'velvet'},
+ {key:'classic',name:'Ube Classic',html:'Ube<br>Classic',eyebrow:'FAMILIAR AT HEART',description:'The classic expression of the ube flavor.',family:'velvet'},
  {key:'macchiato',name:'Ube Macchiato',html:'Ube<br>Macchiato',eyebrow:'THE CAFÉ EDIT',description:'A macchiato-inspired ube pairing.',image:'ube-macchiato',width:1000,family:'cafe'},
- {key:'vanilla',name:'Ube Vanilla',html:'Ube<br>Vanilla',eyebrow:'A FAMILIAR PAIRING',description:'Ube and vanilla in one flavor idea.',image:'ube-vanilla',width:1000,family:'velvet'},
- {key:'salted-caramel',name:'Ube Salted Caramel',html:'Ube Salted<br>Caramel',eyebrow:'SWEET MEETS SALTY',description:'A sweet-and-salty ube pairing.',image:'ube-salted-caramel',width:1000,family:'velvet'},
+ {key:'vanilla',name:'Ube Vanilla',html:'Ube<br>Vanilla',eyebrow:'A FAMILIAR PAIRING',description:'Ube and vanilla in one flavor idea.',family:'velvet'},
+ {key:'salted-caramel',name:'Ube Salted Caramel',html:'Ube Salted<br>Caramel',eyebrow:'SWEET MEETS SALTY',description:'An ube and salted caramel flavor to discover.',family:'velvet'},
  {key:'criollo-cacao',name:'Ube Criollo Cacao',html:'Ube Criollo<br>Cacao',eyebrow:'THE CACAO EDIT',description:'An ube and cacao flavor in the Euro Blend collection.',image:'ube-criollo-cacao',width:1000,family:'cafe'},
  {key:'criollo-salted-caramel',name:'Ube Criollo Salted Caramel',html:'Ube Criollo<br>Salted Caramel',eyebrow:'THE UNEXPECTED PAIRING',description:'A cacao-inspired pairing with a salted caramel twist.',image:'ube-criollo-salted-caramel',width:1000,family:'cafe'}
 ];
 if(!$('#flavor-showcase'))return; // Trade page shares navigation, not the interactive home showcase.
-const select=$('#flavor-showcase'),image=$('#flavor-image'),title=$('#flavor-title'),eyebrow=$('#flavor-eyebrow'),description=$('#flavor-description'),counter=$('#flavor-count'),enquire=$('#flavor-enquire'),copy=$('#copy-flavor'),status=$('#copy-status');
+const select=$('#flavor-showcase'),image=$('#flavor-image'),identity=$('#flavor-identity'),identityName=$('#flavor-identity-name'),title=$('#flavor-title'),eyebrow=$('#flavor-eyebrow'),description=$('#flavor-description'),counter=$('#flavor-count'),enquire=$('#flavor-enquire'),copy=$('#copy-flavor'),status=$('#copy-status');
 const rail=$('.flavor-rail'),buttons=$$('.flavor-rail__option'),groups=$$('.flight-groups__tab');
 const add=$('#add-to-flight'),tastingList=$('#tasting-list'),tastingStatus=$('#tasting-status'),tastingEmail=$('#tasting-email');
 let selected=5,activeFamily='velvet';
@@ -57,8 +57,18 @@ function choose(i){
  $('#pack-view').hidden=!photo;
  $('#pack-carton').classList.add('is-active');$('#pack-carton').setAttribute('aria-pressed','true');
  $('#pack-sachet').classList.remove('is-active');$('#pack-sachet').setAttribute('aria-pressed','false');
- if(photo){image.srcset=`/images/editorial-${photo}-480.webp 480w, /images/editorial-${photo}-800.webp 800w`;image.src=`/images/editorial-${photo}-800.webp`;image.alt=f.name+' packaging artwork on natural linen';}
- else{image.srcset=`/images/${f.image}-480.webp 480w, /images/${f.image}-800.webp 800w, /images/${f.image}.webp ${f.width}w`;image.src=`/images/${f.image}-800.webp`;image.alt='Illustrative Euro Blend '+f.name+' serving and packaging presentation';}
+ if(photo){
+  identity.hidden=true;image.hidden=false;
+  image.srcset=`/images/editorial-${photo}-480.webp 480w, /images/editorial-${photo}-800.webp 800w`;
+  image.src=`/images/editorial-${photo}-800.webp`;
+  image.alt='Euro Blend '+f.name+' packaging artwork on natural linen';
+ }else{
+  // Owner directive: do not illustrate colors of an unverified beverage.
+  image.hidden=true;image.removeAttribute('srcset');image.removeAttribute('src');image.alt='';
+  identityName.textContent=f.name;
+  identity.setAttribute('aria-label','Euro Blend '+f.name+' name artwork with no beverage appearance depicted');
+  identity.hidden=false;
+ }
  title.innerHTML=f.html;eyebrow.textContent=f.eyebrow;description.textContent=f.description;
  counter.textContent=String(selected+1).padStart(2,'0')+' / 08';
  enquire.setAttribute('aria-label','Enquire about '+f.name+' on Euro Blend Facebook');

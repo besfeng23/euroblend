@@ -21,6 +21,12 @@ for(const f of ['index.html','trade.html','script.js']) {
  if(content.includes('mailto:'))problems.push(f+': unapproved email contact link');
 }
 const home=readFileSync('index.html','utf8');
+const storefrontJS=readFileSync('script.js','utf8');
+if(home.includes('/images/ube-salted-caramel-')) problems.push('index.html: unapproved Ube Salted Caramel image');
+for (const item of ['ube-salted-caramel','ube-milk','ube-classic','ube-vanilla']) {
+ if (storefrontJS.includes("image:'"+item+"'")) problems.push('script.js: unapproved illustrative product image for '+item);
+}
+if (!home.includes('id="flavor-identity"')) problems.push('index.html: neutral visual fallback missing');
 for (const flavor of ['Ube Latte','Ube Milk','Ube Classic','Ube Macchiato','Ube Vanilla','Ube Salted Caramel','Ube Criollo Cacao','Ube Criollo Salted Caramel']) {
  if (!home.includes(flavor)) problems.push('index.html: missing '+flavor);
 }

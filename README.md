@@ -41,3 +41,7 @@ The latest owner-supplied packaging is reflected in optimized carton/sachet imag
 ### Known limitations
 
 The site lacks a CRM-backed enquiry form, direct messaging deep link, and independently verified real-product inventory. Social-sharing and final retail packaging must be approved separately. See [DESIGN_AUDIT.md](./DESIGN_AUDIT.md) for the latest release observations.
+
+## Avoid misleading product colors (owner/product-team directive, November 23)
+
+The product team raised a customer-expectation issue: a generated Ube Salted Caramel drink photo shows a hue that buyers could expect from the actual item. Do not show that image or imply a prepared-beverage color that has not been verified. Ube Milk, Ube Classic, Ube Vanilla and Ube Salted Caramel now use restrained brand typography, not invented carton colors, drink hues or cup photography. The four other flavors retain existing owner-supplied packaging references. Restore a product photo only after the product team approves an accurate real-world photograph.
