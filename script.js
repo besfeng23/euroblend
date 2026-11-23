@@ -3,7 +3,6 @@
 const $=(selector)=>document.querySelector(selector);
 const $$=(selector)=>[...document.querySelectorAll(selector)];
 const facebook='https://www.facebook.com/share/1deLJW2QHp/';
-const email='1064euroblend@gmail.com';
 const menu=$('#mobile-menu'),nav=$('#site-nav');
 if(menu&&nav){
  const close=()=>{menu.setAttribute('aria-expanded','false');menu.setAttribute('aria-label','Open menu');nav.classList.remove('is-open')};
@@ -19,8 +18,8 @@ const flavors=[
  {key:'macchiato',name:'Ube Macchiato',html:'Ube<br>Macchiato',eyebrow:'THE CAFÉ EDIT',description:'A macchiato-inspired ube pairing.',image:'ube-macchiato',width:1000,family:'cafe'},
  {key:'vanilla',name:'Ube Vanilla',html:'Ube<br>Vanilla',eyebrow:'A FAMILIAR PAIRING',description:'Ube and vanilla in one flavor idea.',image:'ube-vanilla',width:1000,family:'velvet'},
  {key:'salted-caramel',name:'Ube Salted Caramel',html:'Ube Salted<br>Caramel',eyebrow:'SWEET MEETS SALTY',description:'A sweet-and-salty ube pairing.',image:'ube-salted-caramel',width:1000,family:'velvet'},
- {key:'criollo-cacao',name:'Ube Criollo Cacao',html:'Ube Criollo<br>Cacao',eyebrow:'THE CACAO EDIT',description:'An ube-and-Criollo-cacao-inspired flavor.',image:'ube-criollo-cacao',width:1000,family:'cafe'},
- {key:'criollo-salted-caramel',name:'Ube Criollo Salted Caramel',html:'Ube Criollo<br>Salted Caramel',eyebrow:'THE UNEXPECTED PAIRING',description:'Cacao-inspired notes and salted caramel in the flavor name.',image:'ube-criollo-salted-caramel',width:1000,family:'cafe'}
+ {key:'criollo-cacao',name:'Ube Criollo Cacao',html:'Ube Criollo<br>Cacao',eyebrow:'THE CACAO EDIT',description:'An ube and cacao flavor in the Euro Blend collection.',image:'ube-criollo-cacao',width:1000,family:'cafe'},
+ {key:'criollo-salted-caramel',name:'Ube Criollo Salted Caramel',html:'Ube Criollo<br>Salted Caramel',eyebrow:'THE UNEXPECTED PAIRING',description:'A cacao-inspired pairing with a salted caramel twist.',image:'ube-criollo-salted-caramel',width:1000,family:'cafe'}
 ];
 if(!$('#flavor-showcase'))return; // Trade page shares navigation, not the interactive home showcase.
 const select=$('#flavor-showcase'),image=$('#flavor-image'),title=$('#flavor-title'),eyebrow=$('#flavor-eyebrow'),description=$('#flavor-description'),counter=$('#flavor-count'),enquire=$('#flavor-enquire'),copy=$('#copy-flavor'),status=$('#copy-status');
@@ -32,7 +31,6 @@ const indices=()=>flavors.map((f,i)=>f.family===activeFamily?i:-1).filter(i=>i>=
 const productPhotos={latte:'ube-latte',macchiato:'ube-macchiato','criollo-cacao':'ube-criollo-cacao','criollo-salted-caramel':'ube-criollo-salted-caramel'};
 let packView='carton';
 const sourceText=(()=>{const p=new URLSearchParams(location.search),parts=[];for(const field of ['utm_source','utm_campaign','ref']){const value=(p.get(field)||'').replace(/[^a-zA-Z0-9 _.-]/g,'').slice(0,70);if(value)parts.push(field+': '+value)}return parts.length?'\nWhere I found Euro Blend: '+parts.join(' / '):''})();
-const emailHref=(subject,body)=>`mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 const simpleEnquiry=(names)=>'Hello Euro Blend! I would like to ask about '+names.join(', ')+'. Please share current pack sizes, pricing, availability and delivery options. Thank you.';
 const copyText=async(value)=>{
  try{if(!navigator.clipboard?.writeText)throw Error('Clipboard unavailable');await navigator.clipboard.writeText(value);return true}
@@ -47,7 +45,7 @@ function renderTasting(){
   button.addEventListener('click',()=>{saved.splice(saved.indexOf(i),1);tastingStatus.textContent='Removed '+flavors[i].name+'.';renderTasting()});tastingList.append(button)
  });
  const names=saved.map(i=>flavors[i].name);
- tastingEmail.href=emailHref('Euro Blend flavor enquiry',simpleEnquiry(names.length?names:['your ube collection'])+sourceText);
+ tastingEmail.href=facebook;tastingEmail.target='_blank';tastingEmail.rel='noopener noreferrer';
  add.setAttribute('aria-pressed',String(saved.includes(selected)));
  add.firstChild.textContent=saved.includes(selected)?'Remove from my edit ':'Add to my edit ';
 }
@@ -96,8 +94,8 @@ add.addEventListener('click',()=>{
  else{saved.push(selected);tastingStatus.textContent='Added '+flavors[selected].name+'.'}
  renderTasting();
 });
-copy.addEventListener('click',async()=>{const okay=await copyText(simpleEnquiry([flavors[selected].name]));status.textContent=okay?'Enquiry copied. Paste it into a Facebook message.':'Copy unavailable here. Mention '+flavors[selected].name+' when you message Euro Blend.'});
-$('#tasting-copy').addEventListener('click',async()=>{const names=saved.map(i=>flavors[i].name);if(!names.length){tastingStatus.textContent='Choose a flavor first.';return}const okay=await copyText(simpleEnquiry(names));tastingStatus.textContent=okay?'Your tasting edit is copied and ready to send.':'Copy unavailable. You can open an email draft instead.'});
+copy.addEventListener('click',async()=>{const okay=await copyText(simpleEnquiry([flavors[selected].name])+sourceText);status.textContent=okay?'Enquiry copied. Paste it into a Facebook message.':'Copy unavailable here. Mention '+flavors[selected].name+' when you message Euro Blend.'});
+$('#tasting-copy').addEventListener('click',async()=>{const names=saved.map(i=>flavors[i].name);if(!names.length){tastingStatus.textContent='Choose a flavor first.';return}const okay=await copyText(simpleEnquiry(names)+sourceText);tastingStatus.textContent=okay?'Your tasting edit is copied. Open Facebook to send it.':'Copy unavailable. Please list your chosen flavors when contacting Euro Blend.'});
 setFamily(activeFamily);renderTasting();
 // Theme controls change appearance and creative story only. They do not claim a morning/evening formulation.
 const moodButtons=$$('[data-mood-choice]');
@@ -119,9 +117,9 @@ moodButtons.forEach(b=>b.addEventListener('click',()=>setMood(b.dataset.moodChoi
 // Conversion pathways: contact only, no invisible lead collection or promise of order submission.
 let type='personal';const personal=$('#enquiry-personal'),trade=$('#enquiry-trade'),action=$('#enquiry-action'),guide=$('#enquiry-guide'),enquiryStatus=$('#enquiry-status');
 function currentMessage(){const names=saved.map(i=>flavors[i].name);return type==='personal'?simpleEnquiry(names.length?names:['the Euro Blend Ube Collection']):'Hello Euro Blend! I am enquiring about hospitality, café or retail supply. Please share your current product list, pack specifications, business pricing and applicable terms. '+(names.length?'Flavors of interest: '+names.join(', ')+'. ':'')+'Thank you.'}
-function setEnquiry(kind){type=kind==='trade'?'trade':'personal';personal.classList.toggle('is-active',type==='personal');trade.classList.toggle('is-active',type==='trade');personal.setAttribute('aria-pressed',String(type==='personal'));trade.setAttribute('aria-pressed',String(type==='trade'));guide.textContent=type==='personal'?'Ask about flavor availability, current prices and delivery through the official Euro Blend Facebook page.':'Ask about café, retail or hospitality requirements through the Euro Blend business enquiry email.';action.href=type==='personal'?facebook:emailHref('Euro Blend hospitality and trade enquiry',currentMessage()+sourceText);action.innerHTML=type==='personal'?'Message on Facebook <span aria-hidden="true">↗</span>':'Open business email draft <span aria-hidden="true">↗</span>';enquiryStatus.textContent=''}
+function setEnquiry(kind){type=kind==='trade'?'trade':'personal';personal.classList.toggle('is-active',type==='personal');trade.classList.toggle('is-active',type==='trade');personal.setAttribute('aria-pressed',String(type==='personal'));trade.setAttribute('aria-pressed',String(type==='trade'));guide.textContent=type==='personal'?'Ask about flavor availability, current prices and delivery through Euro Blend’s Facebook page.':'For café, retail or hospitality supply, copy your enquiry and contact Euro Blend through its Facebook page.';action.href=facebook;action.target='_blank';action.rel='noopener noreferrer';action.innerHTML=type==='personal'?'Open Euro Blend Facebook <span aria-hidden="true">↗</span>':'Open Facebook for trade enquiries <span aria-hidden="true">↗</span>';enquiryStatus.textContent=''}
 personal.addEventListener('click',()=>setEnquiry('personal'));trade.addEventListener('click',()=>setEnquiry('trade'));
-$('#enquiry-copy').addEventListener('click',async()=>{const okay=await copyText(currentMessage());enquiryStatus.textContent=okay?'Enquiry copied and ready to paste.':'Copy unavailable. You can use the contact link above.'});
+$('#enquiry-copy').addEventListener('click',async()=>{const okay=await copyText(currentMessage()+sourceText);enquiryStatus.textContent=okay?'Enquiry copied and ready to paste.':'Copy unavailable. You can use the contact link above.'});
 setEnquiry('personal');
 // Progressive enhancement: do not hide content if animation observer fails or reduced motion is requested.
 const reduced=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
