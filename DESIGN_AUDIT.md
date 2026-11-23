@@ -41,3 +41,7 @@ Scope: `index.html`, `style.css`, `script.js`, `trade.html`, user-supplied packa
 - Correct product spelling: Criollo. Product names remain Ube Criollo Cacao and Ube Criollo Salted Caramel. No unverified cacao cultivar claim is made.
 - The older Gmail address used the retired prefix and has been removed from the public storefront and trade page. Until a replacement address is approved, the existing Euro Blend Facebook link is the contact route with a copyable enquiry.
 - Physical packaging requires independent approval of labels, contents and weight specifications.
+
+## Product color accuracy — November 23, 2026
+
+The owner supplied a Messenger screenshot with feedback that the generated Ube Salted Caramel drink image could create an incorrect customer expectation about the product's color. The shop now removes the misleading product shot from the initial flavor gallery and all selector states, and uses a neutral Euro Blend typographic treatment. Ube Milk, Ube Classic and Ube Vanilla follow the same policy while actual product visuals are unverified. The site continues to use packaging references supplied for Ube Latte, Ube Macchiato and the two Criollo flavors. No artificial drink color should be published as a promised physical-product appearance.
