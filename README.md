@@ -1,41 +1,13 @@
-# Euro Blend — premium photography-led website
+# Euro Blend — Ube Collection
 
-Production: https://euroblend.vercel.app/
-Repository: https://github.com/besfeng23/euroblend
+Production: https://euroblend.vercel.app/  
+Source: https://github.com/besfeng23/euroblend
 
-## November 22, 2026 visual redesign
-- Replaced CSS-illustrated cartoon sachets and cups with real, licensed photographic editorial imagery.
-- **Logo:** \`euroblend-mark.svg\` is a high-fidelity contour vectorisation of the exact lavender three-part swirl supplied by the owner in chat (original uploaded image, 1536 × 1536). The shape and lavender hue are preserved; the white background is not part of the symbol. No invented circular badge.
-- Independent responsive layout for consumer beverages: editorial serif typography, soft neutral ivory, lavender accents, cinematic photographic sections, clear order enquiry calls-to-action.
-- Euroblend remains the brand; “UBEVIA” is an unapproved naming idea and is deliberately NOT published.
+## Current release direction (November 23, 2026)
 
-## Image sources and limitations
-Images are third-party **Pexels free-to-use editorial lifestyle photographs**, not photographs of Euro Blend's actual product:
-- Blanca Isela — https://www.pexels.com/photo/purple-latte-art-on-wooden-table-35240181/
-- Sydney Sang — https://www.pexels.com/photo/close-up-of-hand-stirring-purple-drink-with-straw-30133568/
-- Bruna Corrêa — https://www.pexels.com/photo/barista-making-layered-latte-in-a-cafe-22873659/
-These images are loaded from images.pexels.com and credited in the footer. Replace with licensed **actual** Euro Blend product photos as soon as available. Refer to https://www.pexels.com/license/.
+Euro Blend is a premium Philippine-market beverage presentation. It is a static Vercel website with the home collection and a hospitality/trade information page. Buyers can copy an enquiry and open the official Euro Blend Facebook page. This site does not accept payment, transmit orders, or store customer enquiries.
 
-## Product claims deliberately limited
-- “Deep Ube” announced publicly as 3-in-1 Ube Latte, 10 × 25 g in Facebook post; confirm physical label.
-- Classic Ube and Ube Milk appear in Facebook packaging artwork. Do not assume active inventory.
-- Facebook artwork shows inconsistent 25 g / 30 g values. No price, shipping, health, nutrition, ingredient, FDA registration, sales or payment guarantees invented.
-- No credit-card collection, cart, or fake reviews. CTAs open brand Facebook / public email.
-- Verify manufacturer, full labels, pricing, inventory, shipping, refunds, payment channels and customer privacy before checkout integration.
-
-## Run
-Open \`index.html\` with a web server; static Vercel hosting requires no dependencies or build script.
-
-## Flavor collection update (November 22, 2026)
-- Published Facebook introduction: **Deep Ube** (3-in-1 Ube Latte; post mentions 10 × 25 g, subject to label verification).
-- Names visible in the company's cover packaging artwork: **Classic Ube**, **Ube Milk** (formulas and inventory unverified).
-- Owner mentioned **Ube with Chocolate** as an idea for a broader flavor lineup; site explicitly marks **Ube + Chocolate** as a *flavor exploration, not for sale*. Do not promote until owner confirms the SKU and availability.
-- Product listings are now photography-led with plain provenance notes; no artificial packaging or inaccurate product photographs, no checkout promises.
-- For additional flavors, use their owner-confirmed names and label data before adding sales links.
-- New Pexels editorial inspiration: Amirho3in Tavkoli, https://www.pexels.com/photo/purple-drink-with-ice-19154600/ ; Aida Shukuhi, https://www.pexels.com/pt-br/foto/comida-alimento-refeicao-cafeina-20205944/ .
-
-## Owner-confirmed eight-flavor lineup
-Source: November 22, 2026 owner-supplied product names; preserve spelling exactly, particularly **Croillo**.
+### Canonical eight product names
 
 1. Ube Latte
 2. Ube Milk
@@ -43,33 +15,29 @@ Source: November 22, 2026 owner-supplied product names; preserve spelling exactl
 4. Ube Macchiato
 5. Ube Vanilla
 6. Ube Salted Caramel
-7. Ube Croillo Cacao
-8. Ube Croillo Salted Caramel
+7. Ube Criollo Cacao
+8. Ube Criollo Salted Caramel
 
-These eight are **names confirmed by the owner**, not independently verified stocked SKUs. The website displays all eight with enquiry links but makes no assumptions about current prices, recipes, ingredient origins, nutrition, manufacturing, or stock. Replace placeholder/editorial serving imagery with original approved product photographs when supplied. Earlier speculative "Ube + Chocolate" product card was retired because it is not on the definitive owner list. The lavender owner-provided swirl vector is unchanged. The visible brand is Euro Blend without 1064; existing email addresses intentionally retain their legacy digits.
+**Criollo is the correct spelling** of the cacao variety term. Never introduce its transposed misspelling. Naming does not establish that any ingredient actually comes from a verified Criollo cultivar; supplier evidence is required before making provenance claims.
 
-## Product-first credibility pass
-- Remove the unrelated red-apron barista photo, near-black hand-with-ring photo, repetitive introduction, and repeated hero image block.
-- Move collection immediately after concise sachet/ordering facts; retain FAQ and contact sections.
-- Eight photo-backed cards with distinct illustrative beverage imagery, descriptive name-derived cues, clear disclaimers, and prominent enquiry actions. **These are still third-party licensed editorial photographs, not actual product photographs.** Replace with approved photo shoot before commercial launch.
-- Correct Croillo to **Criollo** in customer-facing names, per latest owner editorial correction. Ingredient origins and caffeine/bestseller status remain unverified.
-- Increase typography contrast and interactive target sizes. No fabricated prices, health/ingredient assurances, checkout or inventory.
+### Locked branding
 
-## Hot-latte brand-image audit — November 22, 2026
-- The owner requested the latest hot Euro Blend Ube Latte concept render to replace an iced-drink hero. Original generated asset stored at `images/euroblend-hot-ube-concept.png` (1199 × 1312, 2.6 MB).
-- **Provenance**: Generated visual, not a genuine photograph of retail packaging or an actual prepared product. The box/sachet also depicts unverified "real ube", `20 g`, `10 sachets`, and instructions, so a visible concept/label disclaimer stays on the website. Earlier published Facebook Deep Ube post stated `10 × 25 g`, contradictory to generated artwork. Do not convert either into verified sales specifications.
-- **Serving method**: Prior Facebook screenshot says the Deep Ube product is suitable "Hot or iced"; this does *not* substantiate that the whole eight-flavor range is only hot coffee. The owner now prefers a HOT Ube Latte hero. Other variants' preparation methods remain unverified.
-- Removed the chilled iced beverage from the hero and put the approved hot steaming Ube Latte concept in its place. Updated alt text, provenance notice, and FAQ. Other flavor-card photos remain explicitly editorial references, not finished Euro Blend products.
-- Still pending: actual verified product photos/packaging, formula, label, compliance, and an authenticated visual browser QA. No payments or stock claims added.
+- Only **EURO BLEND** is permitted in public-facing identity and product imagery.
+- The retired four-digit numeric prefix is blacklisted. Do not put it in UI, email addresses, filenames, advertising, alt text, social cards, or future packaging. The repository includes an automated brand-guard check to catch text regressions.
+- The old Gmail inbox contained that prefix and is not a permitted published contact. **Do not invent a replacement email.** The official owner-supplied Facebook page is the temporary contact path, including hospitality enquiries.
+- Do not create additional products from the three Ube Latte color-variant mockups.
 
-## Hot flavor-grid image update
-- Replaced all eight third-party / iced stock-photo cards with individual crops from one user-approved-direction 4 × 2 collage: `images/euroblend-eight-hot-flavors.png`, 1536 × 1024, 2.6 MB. Each tile is a distinct photorealistic **hot** beverage concept, not genuine product photography.
-- Grid crop mapping exactly follows the eight owner-confirmed names in display order. Product names and Criollo spelling unchanged.
-- Trade-off: both new concept PNGs are about 2.6 MB each; reduce to WebP/AVIF when a verified lossless production asset-processing path is available. Product-grid sprite img is lazy-loaded and reused from one URL, limiting duplicate transfers.
-- Removed leftover third-party image attributions after replacing those sources, and added explicit generated-asset provenance.
+### Product photography
 
-## Optimized on-site image assets (supersedes 2.6 MB PNG versions)
-- `images/euroblend-hot-hero.webp`: 1100 × 1204, 132 KB; generated packaging concept, displays a **hot** beverage.
-- `images/euroblend-eight-hot-flavors.webp`: 1536 × 1024, 141 KB; eight individually cropped hot serving concepts on one reusable sprite.
-- PNGs removed from repository to prevent bloated deployment. Modern WebP loads across current Chrome and Safari. They are still illustrative mockups, not photographed final merchandise.
-- The previous README references to PNG filenames document earlier revisions, not current production paths.
+The latest owner-supplied packaging is reflected in optimized carton/sachet imagery for Ube Latte, Ube Macchiato, Ube Criollo Cacao, and Ube Criollo Salted Caramel. The other four products retain earlier illustrative images pending matching approved photographs. Source images, design derivatives, and physical retail packaging must not be conflated. Prefer natural linen, warm ivory, subdued plum/cacao, legible complete packages, and calm compositions. Do not crop or obstruct package labels.
+
+### Release and claims policy
+
+- No invented ingredient composition, cacao genetics, caffeine levels, food-safety credentials, prices, stock, shipping terms, pack quantity, or weights.
+- Verify whether the actual printed item is 3-in-1 and whether its weight refers to one sachet or the full package before publication/printing.
+- All changes through a reviewed GitHub PR. Check responsive layouts, keyboard use, the flavor selector, both visual modes, the contact path, and Vercel deployment status. Avoid unapproved spending, databases, or checkout.
+- Run `node --check script.js` and `node scripts/brand-check.mjs` before merging. On GitHub, the brand guard runs on PRs and main.
+
+### Known limitations
+
+The site lacks a CRM-backed enquiry form, direct messaging deep link, and independently verified real-product inventory. Social-sharing and final retail packaging must be approved separately. See [DESIGN_AUDIT.md](./DESIGN_AUDIT.md) for the latest release observations.

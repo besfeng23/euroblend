@@ -226,3 +226,20 @@ body[data-mood="purple-hour"] .editorial-look__photos button{background:#342637}
 }
 body[data-mood="purple-hour"] .hero .text-cta{color:#f4d6ec;border-color:#bf92bd}
 body[data-mood="purple-hour"] .hero .text-cta:hover{color:#fff}
+
+/* Brand polish: packaging legibility, clear mobile swipe cue and usable controls. */
+.editorial-look__swipe{display:none}
+.editorial-look__photos button{border-radius:3px}
+.editorial-look__photos button:focus-visible,.pack-view button:focus-visible,.flavor-rail__option:focus-visible,.mood-switch__button:focus-visible{outline:3px solid #b4779d;outline-offset:3px}
+.pack-view button{min-height:44px;padding:9px 18px}
+.editorial-look__photos img{transition:transform .6s cubic-bezier(.22,1,.36,1)}
+@media(max-width:760px){
+ .editorial-look__swipe{display:flex;justify-content:space-between;align-items:center;color:#766475;font-weight:700;font-size:11px;letter-spacing:.04em;margin:0 0 14px}
+ .editorial-look__photos{scroll-padding-inline:18px}
+ .editorial-look__photos button{flex-basis:min(72vw,300px)}
+ .pack-view{bottom:36px}
+ .pack-view button{font-size:12px}
+ .showcase__photo{padding-bottom:91px}
+ .hero__photo-tag{max-width:calc(100% - 38px)}
+}
+@media(prefers-reduced-motion:reduce){.editorial-look__photos img{transition:none!important}}

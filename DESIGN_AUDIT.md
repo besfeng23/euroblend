@@ -7,7 +7,7 @@ Scope: `index.html`, `style.css`, `script.js`, `trade.html`, user-supplied packa
 - Eight established flavors retained: Ube Latte, Ube Milk, Ube Classic, Ube Macchiato, Ube Vanilla, Ube Salted Caramel, Ube Criollo Cacao, Ube Criollo Salted Caramel.
 - The latest supplied image set depicts **four** of the eight flavors plus companion sachets. Three "Light Lavender / Classic Ube / Deep Ube" carton variants are visibly labelled **Ube Latte** and are not assumed to be three new flavors. This change selects the Deep Ube image as the Ube Latte reference.
 - New photography used: Ube Latte (carton/sachet), Ube Macchiato (carton/sachet), Ube Criollo Cacao (carton/sachet), and Ube Criollo Salted Caramel (carton/sachet). The remaining four retain the previous illustrative art until actual package photos arrive.
-- The new user-supplied artwork spelled Criollo as "CROILLO" and included "1064" on Ube Latte. The *website presentation derivatives* correct these display issues. Original user uploads remain intact.
+- The new user-supplied artwork spelled Criollo as "misspelled variant of Criollo" and included "retired numeric brand prefix" on Ube Latte. The *website presentation derivatives* correct these display issues. Original user uploads remain intact.
 - Printed "3-in-1", "10 sachets", and "30g" are **visual references**, not independently authenticated product specifications. Do not print, market as verified, or use as structured-data offers without product-owner confirmation.
 
 ## Design / accessibility / functional audit
@@ -15,7 +15,7 @@ Scope: `index.html`, `style.css`, `script.js`, `trade.html`, user-supplied packa
 |---|---|---|
 | Repetitive generic AI-styled imagery did not match approved packaging | High | Replace four matching flavor displays with the supplied carton images; retain old art only for unrepresented flavors. |
 | Older collage/cropped photography made labels unreadable | High | New editorial photo strip uses containment rather than `object-fit: cover`; phone layout becomes horizontally scrollable with full-package cards. |
-| Product screenshots embedded old 1064 branding and misspelt Criollo | High | Corrected only in optimized website-image derivatives; don't alter original supplied source files. |
+| Product screenshots embedded old retired numeric brand prefix branding and misspelt Criollo | High | Corrected only in optimized website-image derivatives; don't alter original supplied source files. |
 | Visitors couldn't inspect individual sachets for the supplied product references | Medium | Added keyboard-accessible Carton/Sachet buttons for the four supported flavors, hidden for other flavors. |
 | Hero looked like a generic cosmetic advertisement instead of a Philippine beverage line | Medium | Simplified to warm natural materials and user-supplied product photography, reducing excessive gradients/shape decoration. |
 | Full 8-flavor lineup could be mistaken for the three Ube Latte color shades in uploaded images | High | Preserved exact eight canonical product names and no new SKUs/variants. |
@@ -35,3 +35,9 @@ Scope: `index.html`, `style.css`, `script.js`, `trade.html`, user-supplied packa
 - Local JS syntax: `node --check` passed.
 - Local Chromium script and layout: passed at four viewport widths with zero reported page JS exceptions and zero page horizontal overflow. Images lazy-loaded out of viewport are not counted as failed loads in the initial screenshot.
 - External providers: Vercel and GitHub CI to be checked on preview before merging.
+
+## Branding and contact correction — November 23, 2026
+- Canonical public brand: EURO BLEND. The retired numeric prefix is prohibited in public text, imagery, brand assets and outbound contact labels.
+- Correct product spelling: Criollo. Product names remain Ube Criollo Cacao and Ube Criollo Salted Caramel. No unverified cacao cultivar claim is made.
+- The older Gmail address used the retired prefix and has been removed from the public storefront and trade page. Until a replacement address is approved, the existing Euro Blend Facebook link is the contact route with a copyable enquiry.
+- Physical packaging requires independent approval of labels, contents and weight specifications.
