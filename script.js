@@ -72,13 +72,14 @@ function choose(i){
  }
  title.innerHTML=f.html;eyebrow.textContent=f.eyebrow;description.textContent=f.description;
  counter.textContent=String(selected+1).padStart(2,'0')+' / '+String(flavors.length).padStart(2,'0');
- enquire.setAttribute('aria-label','Enquire about '+f.name+' on Euro Blend Facebook');
+ enquire.setAttribute('aria-label','Ask about this flavor: '+f.name+' on the Euro Blend Facebook page');
  buttons.forEach((b,n)=>{const active=n===selected;b.classList.toggle('is-selected',active);b.setAttribute('aria-pressed',String(active))});
  status.textContent='';renderTasting();
 }
 function setFamily(family){
  if(!flavors.some(f=>f.family===family))return;
  activeFamily=family;
+ $('.showcase__bottom').hidden=indices().length<2;
  groups.forEach(b=>{const active=b.dataset.family===family;b.classList.toggle('is-active',active);b.setAttribute('aria-pressed',String(active))});
  buttons.forEach((b,i)=>{b.hidden=flavors[i].family!==family});
  if(flavors[selected].family!==family)choose(indices()[0]);else choose(selected);
@@ -95,9 +96,9 @@ $('#pack-sachet').addEventListener('click',()=>setPackView('sachet'));
 $$('[data-feature-flavor]').forEach(b=>b.addEventListener('click',()=>{const i=Number(b.dataset.featureFlavor);setFamily(flavors[i].family);choose(i);document.querySelector('.showcase').scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'})}));
 buttons.forEach((button,index)=>button.addEventListener('click',()=>choose(index)));
 groups.forEach(button=>button.addEventListener('click',()=>setFamily(button.dataset.family)));
-const rotate=step=>{const list=indices(),pos=list.indexOf(selected);choose(list[(pos+step+list.length)%list.length])};
+const rotate=step=>{const list=indices();if(list.length<2)return;const pos=list.indexOf(selected);choose(list[(pos+step+list.length)%list.length])};
 $('#prev-flavor').addEventListener('click',()=>rotate(-1));$('#next-flavor').addEventListener('click',()=>rotate(1));
-rail.addEventListener('keydown',e=>{if(!['ArrowRight','ArrowLeft'].includes(e.key))return;e.preventDefault();rotate(e.key==='ArrowRight'?1:-1);buttons[selected].focus()});
+rail.addEventListener('keydown',e=>{if(indices().length<2||!['ArrowRight','ArrowLeft'].includes(e.key))return;e.preventDefault();rotate(e.key==='ArrowRight'?1:-1);buttons[selected].focus()});
 add.addEventListener('click',()=>{
  const pos=saved.indexOf(selected);
  if(pos>=0){saved.splice(pos,1);tastingStatus.textContent='Removed '+flavors[selected].name+'.'}
