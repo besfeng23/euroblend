@@ -12,23 +12,24 @@ if(menu&&nav){
 }
 const year=$('#year');if(year)year.textContent=String(new Date().getFullYear());
 const flavors=[
- {key:'latte',name:'Ube Latte',html:'Ube<br>Latte',eyebrow:'THE SIGNATURE',description:'A latte-inspired expression of a familiar ube favorite.',image:'ube-latte',width:1122,family:'cafe'},
- {key:'milk',name:'Ube Milk',html:'Ube<br>Milk',eyebrow:'A GENTLER MOMENT',description:'A milk-inspired pairing in the Euro Blend ube collection.',family:'velvet'},
- {key:'classic',name:'Ube Classic',html:'Ube<br>Classic',eyebrow:'FAMILIAR AT HEART',description:'The classic expression of the ube flavor.',family:'velvet'},
  {key:'macchiato',name:'Ube Macchiato',html:'Ube<br>Macchiato',eyebrow:'THE CAFÉ EDIT',description:'A macchiato-inspired ube pairing.',image:'ube-macchiato',width:1000,family:'cafe'},
- {key:'vanilla',name:'Ube Vanilla',html:'Ube<br>Vanilla',eyebrow:'A FAMILIAR PAIRING',description:'Ube and vanilla in one flavor idea.',family:'velvet'},
- {key:'salted-caramel',name:'Ube Salted Caramel',html:'Ube Salted<br>Caramel',eyebrow:'SWEET MEETS SALTY',description:'An ube and salted caramel flavor to discover.',family:'velvet'},
  {key:'criollo-cacao',name:'Ube Criollo Cacao',html:'Ube Criollo<br>Cacao',eyebrow:'THE CACAO EDIT',description:'An ube and cacao flavor in the Euro Blend collection.',image:'ube-criollo-cacao',width:1000,family:'cafe'},
- {key:'criollo-salted-caramel',name:'Ube Criollo Salted Caramel',html:'Ube Criollo<br>Salted Caramel',eyebrow:'THE UNEXPECTED PAIRING',description:'A cacao-inspired pairing with a salted caramel twist.',image:'ube-criollo-salted-caramel',width:1000,family:'cafe'}
+ {key:'criollo-salted-caramel',name:'Ube Criollo with Salted Caramel',html:'Ube Criollo<br>with Salted Caramel',eyebrow:'THE UNEXPECTED PAIRING',description:'A cacao-inspired pairing with a salted caramel twist.',image:'ube-criollo-salted-caramel',width:1000,family:'cafe'},
+ {key:'salted-caramel',name:'Ube Latte — Salted Caramel',html:'Ube Latte —<br>Salted Caramel',eyebrow:'SWEET MEETS SALTY',description:'An ube latte with salted caramel flavor.',family:'velvet'},
+ {key:'vanilla',name:'Ube Latte — Vanilla',html:'Ube Latte —<br>Vanilla',eyebrow:'A FAMILIAR PAIRING',description:'An ube latte with vanilla flavor.',family:'velvet'},
+ {key:'light-lavender',name:'Ube Latte — Light Lavender',html:'Ube Latte —<br>Light Lavender',eyebrow:'THE SIGNATURE',description:'The Light Lavender flavor in the signature Ube Latte collection.',family:'signature'},
+ {key:'classic',name:'Ube Latte — Classic Ube',html:'Ube Latte —<br>Classic Ube',eyebrow:'FAMILIAR AT HEART',description:'The Classic Ube flavor in the signature Ube Latte collection.',family:'signature'},
+ {key:'latte',name:'Ube Latte — Deep Ube',html:'Ube Latte —<br>Deep Ube',eyebrow:'THE SIGNATURE',description:'The Deep Ube flavor in the signature Ube Latte collection.',image:'ube-latte',width:1122,family:'signature'},
+ {key:'milk',name:'Ube Milk',html:'Ube<br>Milk',eyebrow:'A GENTLER MOMENT',description:'A milk-inspired pairing in the Euro Blend ube collection.',family:'milk'}
 ];
 if(!$('#flavor-showcase'))return; // Trade page shares navigation, not the interactive home showcase.
 const select=$('#flavor-showcase'),image=$('#flavor-image'),identity=$('#flavor-identity'),identityName=$('#flavor-identity-name'),title=$('#flavor-title'),eyebrow=$('#flavor-eyebrow'),description=$('#flavor-description'),counter=$('#flavor-count'),enquire=$('#flavor-enquire'),copy=$('#copy-flavor'),status=$('#copy-status');
 const rail=$('.flavor-rail'),buttons=$$('.flavor-rail__option'),groups=$$('.flight-groups__tab');
 const add=$('#add-to-flight'),tastingList=$('#tasting-list'),tastingStatus=$('#tasting-status'),tastingEmail=$('#tasting-email');
-let selected=5,activeFamily='velvet';
+let selected=3,activeFamily='velvet';
 const saved=[];
 const indices=()=>flavors.map((f,i)=>f.family===activeFamily?i:-1).filter(i=>i>=0);
-const productPhotos={latte:'ube-latte',macchiato:'ube-macchiato','criollo-cacao':'ube-criollo-cacao','criollo-salted-caramel':'ube-criollo-salted-caramel'};
+const productPhotos={macchiato:'ube-macchiato','criollo-cacao':'ube-criollo-cacao','criollo-salted-caramel':'ube-criollo-salted-caramel',latte:'ube-latte'};
 let packView='carton';
 const sourceText=(()=>{const p=new URLSearchParams(location.search),parts=[];for(const field of ['utm_source','utm_campaign','ref']){const value=(p.get(field)||'').replace(/[^a-zA-Z0-9 _.-]/g,'').slice(0,70);if(value)parts.push(field+': '+value)}return parts.length?'\nWhere I found Euro Blend: '+parts.join(' / '):''})();
 const simpleEnquiry=(names)=>'Hello Euro Blend! I would like to ask about '+names.join(', ')+'. Please share current pack sizes, pricing, availability and delivery options. Thank you.';
@@ -70,13 +71,13 @@ function choose(i){
   identity.hidden=false;
  }
  title.innerHTML=f.html;eyebrow.textContent=f.eyebrow;description.textContent=f.description;
- counter.textContent=String(selected+1).padStart(2,'0')+' / 08';
+ counter.textContent=String(selected+1).padStart(2,'0')+' / '+String(flavors.length).padStart(2,'0');
  enquire.setAttribute('aria-label','Enquire about '+f.name+' on Euro Blend Facebook');
  buttons.forEach((b,n)=>{const active=n===selected;b.classList.toggle('is-selected',active);b.setAttribute('aria-pressed',String(active))});
  status.textContent='';renderTasting();
 }
 function setFamily(family){
- if(!['velvet','cafe'].includes(family))return;
+ if(!flavors.some(f=>f.family===family))return;
  activeFamily=family;
  groups.forEach(b=>{const active=b.dataset.family===family;b.classList.toggle('is-active',active);b.setAttribute('aria-pressed',String(active))});
  buttons.forEach((b,i)=>{b.hidden=flavors[i].family!==family});
@@ -114,9 +115,9 @@ function setMood(mood){
  moodButtons.forEach(b=>{const on=b.dataset.moodChoice===active;b.classList.toggle('is-active',on);b.setAttribute('aria-pressed',String(on))});
  $('#hero-strap').textContent=active==='morning'?'A FILIPINO FAVORITE, REIMAGINED':'AN EVENING MOOD, A FAMILIAR FLAVOR';
  $('#hero-script').textContent=active==='morning'?'the everyday, elevated.':'after hours.';
- $('#hero-lead').textContent=active==='morning'?'Inspired by the flavors Filipinos love. A collection made to discover, one blend at a time.':'Some moments call for something different. Explore eight flavors in a richer evening atmosphere.';
+ $('#hero-lead').textContent=active==='morning'?'Inspired by the flavors Filipinos love. A collection made to discover, one blend at a time.':'Some moments call for something different. Explore nine flavors in a richer evening atmosphere.';
  $('#photo-tag').textContent=active==='morning'?'START HERE':'THE EVENING EDIT';
- $('#photo-feature').textContent=active==='morning'?'Ube Latte / Deep Ube':'Ube Criollo Salted Caramel';
+ $('#photo-feature').textContent=active==='morning'?'Ube Latte — Deep Ube':'Ube Criollo with Salted Caramel';
  $('#browser-theme-color').setAttribute('content',active==='morning'?'#faf6ed':'#18131b');
  if(active==='purple-hour'){$('.hero__photo-night').loading='eager'}
  try{localStorage.setItem('euroblend-mood',active)}catch{}
