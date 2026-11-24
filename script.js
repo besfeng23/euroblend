@@ -26,7 +26,7 @@ if(!$('#flavor-showcase'))return; // Trade page shares navigation, not the inter
 const select=$('#flavor-showcase'),image=$('#flavor-image'),identity=$('#flavor-identity'),identityName=$('#flavor-identity-name'),title=$('#flavor-title'),eyebrow=$('#flavor-eyebrow'),description=$('#flavor-description'),counter=$('#flavor-count'),enquire=$('#flavor-enquire'),copy=$('#copy-flavor'),status=$('#copy-status');
 const rail=$('.flavor-rail'),buttons=$$('.flavor-rail__option'),groups=$$('.flight-groups__tab');
 const add=$('#add-to-flight'),tastingList=$('#tasting-list'),tastingStatus=$('#tasting-status'),tastingEmail=$('#tasting-email');
-let selected=3,activeFamily='velvet';
+let selected=0,activeFamily='cafe';
 const saved=[];
 const indices=()=>flavors.map((f,i)=>f.family===activeFamily?i:-1).filter(i=>i>=0);
 const productPhotos={macchiato:'ube-macchiato','criollo-cacao':'ube-criollo-cacao','criollo-salted-caramel':'ube-criollo-salted-caramel',latte:'ube-latte'};

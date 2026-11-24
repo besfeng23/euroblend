@@ -75,33 +75,33 @@
     </div>
   </div>
   <div class="flight-groups" role="group" aria-label="Browse flavor groups">
-    <button type="button" class="flight-groups__tab" data-family="cafe" aria-pressed="false"><span>01 / THE CAFÉ EDIT</span><strong>Café &amp; Cacao</strong></button>
-    <button type="button" class="flight-groups__tab is-active" data-family="velvet" aria-pressed="true"><span>02 / FLAVORED LATTE</span><strong>Flavored Latte</strong></button>
+    <button type="button" class="flight-groups__tab is-active" data-family="cafe" aria-pressed="true"><span>01 / THE CAFÉ EDIT</span><strong>Café &amp; Cacao</strong></button>
+    <button type="button" class="flight-groups__tab" data-family="velvet" aria-pressed="false"><span>02 / FLAVORED LATTE</span><strong>Flavored Latte</strong></button>
     <button type="button" class="flight-groups__tab" data-family="signature" aria-pressed="false"><span>03 / SIGNATURE LATTE</span><strong>Signature Latte</strong></button>
     <button type="button" class="flight-groups__tab" data-family="milk" aria-pressed="false"><span>04 / UBE MILK</span><strong>Ube Milk</strong></button>
   </div>
-  <div class="showcase" id="flavor-showcase" data-flavor="salted-caramel">
+  <div class="showcase" id="flavor-showcase" data-flavor="macchiato">
    <div class="showcase__photo"><div class="showcase__photo-frame">
-   <img id="flavor-image" hidden sizes="(max-width:760px) calc(100vw - 72px), 540px" width="1000" height="1250" alt="" decoding="async">
-   <div id="flavor-identity" class="flavor-identity" role="img" aria-label="Euro Blend Ube Latte — Salted Caramel typographic product artwork">
+   <img id="flavor-image" src="/images/editorial-ube-macchiato-800.webp" srcset="/images/editorial-ube-macchiato-480.webp 480w, /images/editorial-ube-macchiato-800.webp 800w" sizes="(max-width:760px) calc(100vw - 72px), 540px" width="1000" height="1250" alt="Euro Blend Ube Macchiato packaging artwork on natural linen" decoding="async">
+   <div id="flavor-identity" class="flavor-identity" hidden role="img" aria-label="Euro Blend Ube Macchiato name artwork with no beverage appearance depicted">
     <span class="flavor-identity__overline">EURO BLEND / THE UBE COLLECTION</span>
     <img class="flavor-identity__mark" src="/euroblend-mark.svg" width="66" height="70" alt="" aria-hidden="true">
-    <strong id="flavor-identity-name">Ube Latte — Salted Caramel</strong>
+    <strong id="flavor-identity-name">Ube Macchiato</strong>
     <span class="flavor-identity__rule" aria-hidden="true"></span>
     <span class="flavor-identity__footnote">DISCOVER THE FLAVOR</span>
    </div>
-  </div><div class="pack-view" id="pack-view" hidden role="group" aria-label="Product view"><button type="button" id="pack-carton" class="is-active" aria-pressed="true">Carton</button><button type="button" id="pack-sachet" aria-pressed="false">Sachet</button></div><div class="showcase__photo-label">THE UBE COLLECTION <span>01—09</span></div></div>
-   <div class="showcase__details"><div class="showcase__top"><span>MEET THE FLAVORS</span><span id="flavor-count">04 / 09</span></div>
-    <div class="showcase__main"><p class="showcase__eyebrow" id="flavor-eyebrow">SWEET MEETS SALTY</p><h3 id="flavor-title">Ube Latte —<br>Salted Caramel</h3><p id="flavor-description">An ube latte with salted caramel flavor.</p><div class="showcase__ctas"><a class="btn btn--ink" id="flavor-enquire" href="https://www.facebook.com/share/1deLJW2QHp/" target="_blank" rel="noopener noreferrer" aria-label="Ask about Ube Latte — Salted Caramel on the Euro Blend Facebook page">Ask about this flavor <span aria-hidden="true">↗</span></a><button id="add-to-flight" type="button" class="copy-link" aria-pressed="false">Add to my edit <span aria-hidden="true">＋</span></button><button id="copy-flavor" type="button" class="copy-link">Copy enquiry <span aria-hidden="true">⧉</span></button></div><span id="copy-status" class="copy-status" role="status" aria-live="polite"></span></div>
+  </div><div class="pack-view" id="pack-view" role="group" aria-label="Product view"><button type="button" id="pack-carton" class="is-active" aria-pressed="true">Carton</button><button type="button" id="pack-sachet" aria-pressed="false">Sachet</button></div><div class="showcase__photo-label">THE UBE COLLECTION <span>01—09</span></div></div>
+   <div class="showcase__details"><div class="showcase__top"><span>MEET THE FLAVORS</span><span id="flavor-count">01 / 09</span></div>
+    <div class="showcase__main"><p class="showcase__eyebrow" id="flavor-eyebrow">THE CAFÉ EDIT</p><h3 id="flavor-title">Ube<br>Macchiato</h3><p id="flavor-description">A macchiato-inspired ube pairing.</p><div class="showcase__ctas"><a class="btn btn--ink" id="flavor-enquire" href="https://www.facebook.com/share/1deLJW2QHp/" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Ube Macchiato on Euro Blend Facebook">Ask about this flavor <span aria-hidden="true">↗</span></a><button id="add-to-flight" type="button" class="copy-link" aria-pressed="false">Add to my edit <span aria-hidden="true">＋</span></button><button id="copy-flavor" type="button" class="copy-link">Copy enquiry <span aria-hidden="true">⧉</span></button></div><span id="copy-status" class="copy-status" role="status" aria-live="polite"></span></div>
     <div class="showcase__bottom"><span>DISCOVER YOUR NEXT FAVORITE</span><div class="showcase__arrows"><button type="button" id="prev-flavor" aria-label="Previous flavor">←</button><button type="button" id="next-flavor" aria-label="Next flavor">→</button></div></div>
    </div>
  </div>
  <div class="flavor-rail" role="group" aria-label="Select a Euro Blend ube flavor">
-  <button type="button" class="flavor-rail__option" data-family="cafe" data-index="0" hidden aria-pressed="false"><span>01</span><strong>Ube Macchiato</strong></button>
-  <button type="button" class="flavor-rail__option" data-family="cafe" data-index="1" hidden aria-pressed="false"><span>02</span><strong>Ube Criollo Cacao</strong></button>
-  <button type="button" class="flavor-rail__option" data-family="cafe" data-index="2" hidden aria-pressed="false"><span>03</span><strong>Ube Criollo with Salted Caramel</strong></button>
-  <button type="button" class="flavor-rail__option is-selected" data-family="velvet" data-index="3" aria-pressed="true"><span>04</span><strong>Ube Latte — Salted Caramel</strong></button>
-  <button type="button" class="flavor-rail__option" data-family="velvet" data-index="4" aria-pressed="false"><span>05</span><strong>Ube Latte — Vanilla</strong></button>
+  <button type="button" class="flavor-rail__option is-selected" data-family="cafe" data-index="0" aria-pressed="true"><span>01</span><strong>Ube Macchiato</strong></button>
+  <button type="button" class="flavor-rail__option" data-family="cafe" data-index="1" aria-pressed="false"><span>02</span><strong>Ube Criollo Cacao</strong></button>
+  <button type="button" class="flavor-rail__option" data-family="cafe" data-index="2" aria-pressed="false"><span>03</span><strong>Ube Criollo with Salted Caramel</strong></button>
+  <button type="button" class="flavor-rail__option" data-family="velvet" data-index="3" hidden aria-pressed="false"><span>04</span><strong>Ube Latte — Salted Caramel</strong></button>
+  <button type="button" class="flavor-rail__option" data-family="velvet" data-index="4" hidden aria-pressed="false"><span>05</span><strong>Ube Latte — Vanilla</strong></button>
   <button type="button" class="flavor-rail__option" data-family="signature" data-index="5" hidden aria-pressed="false"><span>06</span><strong>Ube Latte — Light Lavender</strong></button>
   <button type="button" class="flavor-rail__option" data-family="signature" data-index="6" hidden aria-pressed="false"><span>07</span><strong>Ube Latte — Classic Ube</strong></button>
   <button type="button" class="flavor-rail__option" data-family="signature" data-index="7" hidden aria-pressed="false"><span>08</span><strong>Ube Latte — Deep Ube</strong></button>

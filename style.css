@@ -108,7 +108,10 @@ body[data-mood="purple-hour"] .enquiry-path{background:#f8edf4;color:#321e33}
 @media(max-width:1120px){.ritual__inner{grid-template-columns:1fr 1fr;gap:30px}.tasting-edit{gap:22px}}
 @media(max-width:760px){
  .mood-switch{margin-bottom:17px;max-width:100%}.mood-switch__button{padding:9px 12px;font-size:10px}
- .flight-groups{gap:7px;margin-bottom:12px}.flight-groups__tab{padding:13px 11px}.flight-groups__tab>span{font-size:8px;letter-spacing:.055em}.flight-groups__tab strong{font-size:clamp(22px,5vw,29px)}
+ .flight-groups{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin-bottom:12px}.flight-groups__tab{padding:13px 11px}.flight-groups__tab>span{font-size:8px;letter-spacing:.055em}.flight-groups__tab strong{font-size:clamp(22px,5vw,29px)}
+ .flight-groups__tab>span,.flight-groups__tab strong{min-width:0;max-width:100%;overflow-wrap:anywhere}
+ .flavor-rail{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));overflow:visible;scroll-snap-type:none}
+ .flavor-rail__option>span{flex-shrink:0}.flavor-rail__option strong{min-width:0;overflow-wrap:anywhere}
  .tasting-edit{grid-template-columns:1fr;margin-top:28px;padding:28px 0;gap:18px}.tasting-edit h3{font-size:43px}
  .tasting-edit__buttons{gap:10px}.tasting-edit__buttons .btn{min-height:44px}
  .showcase__ctas{column-gap:12px;row-gap:4px}.showcase__ctas .copy-link{font-size:10px}
