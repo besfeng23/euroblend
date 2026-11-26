@@ -79,7 +79,9 @@ function choose(i){
 function setFamily(family){
  if(!flavors.some(f=>f.family===family))return;
  activeFamily=family;
- $('.showcase__bottom').hidden=indices().length<2;
+ const single=indices().length<2;
+ rail.hidden=single;
+ $('.showcase__bottom').hidden=single;
  groups.forEach(b=>{const active=b.dataset.family===family;b.classList.toggle('is-active',active);b.setAttribute('aria-pressed',String(active))});
  buttons.forEach((b,i)=>{b.hidden=flavors[i].family!==family});
  if(flavors[selected].family!==family)choose(indices()[0]);else choose(selected);

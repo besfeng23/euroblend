@@ -177,7 +177,7 @@ body[data-mood="purple-hour"] .enquiry-path{background:#f8edf4;color:#321e33}
 .showcase__main h3{font-size:clamp(62px,6.3vw,105px)}
 @media(max-width:395px){
  .showcase[data-flavor=macchiato] #flavor-title{font-size:min(62px,calc((100vw - 84px) / 4.4))}
- .showcase:is([data-flavor=salted-caramel],[data-flavor=vanilla],[data-flavor=light-lavender],[data-flavor=classic],[data-flavor=latte]) #flavor-title{font-size:min(62px,calc((100vw - 84px) / 4.7))}
+ .showcase:is([data-flavor=salted-caramel],[data-flavor=vanilla],[data-flavor=light-lavender],[data-flavor=classic],[data-flavor=latte]) #flavor-title{font-size:min(62px,calc((100vw - 84px) / 5.2))}
 }
 .showcase__details{padding-top:55px}
 .showcase__eyebrow{letter-spacing:.15em}
