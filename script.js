@@ -23,6 +23,34 @@ const flavors=[
  {key:'milk',name:'Ube Milk',html:'Ube<br>Milk',eyebrow:'A GENTLER MOMENT',description:'A milk-inspired pairing in the Euro Blend ube collection.',family:'milk'}
 ];
 if(!$('#flavor-showcase'))return; // Trade page shares navigation, not the interactive home showcase.
+const brandFilm=$('#brand-film-video'),brandFilmPlay=$('#brand-film-play');
+if(brandFilm&&brandFilmPlay){
+ const resetBrandFilm=()=>{
+  const restoreFocus=document.activeElement===brandFilm;
+  brandFilm.pause();
+  brandFilm.removeAttribute('src');
+  brandFilm.controls=false;
+  brandFilm.tabIndex=-1;
+  brandFilm.load();
+  brandFilmPlay.hidden=false;
+  if(restoreFocus)brandFilmPlay.focus();
+ };
+ brandFilmPlay.addEventListener('click',()=>{
+  brandFilmPlay.hidden=true;
+  brandFilm.controls=true;
+  brandFilm.tabIndex=0;
+  brandFilm.src='/videos/euroblend-film.mp4';
+  brandFilm.load();
+  brandFilm.focus();
+  const playback=brandFilm.play();
+  if(playback&&typeof playback.catch==='function')playback.catch(()=>{
+   resetBrandFilm();
+   brandFilmPlay.focus();
+  });
+ });
+ brandFilm.addEventListener('ended',resetBrandFilm);
+ brandFilm.addEventListener('error',resetBrandFilm);
+}
 const select=$('#flavor-showcase'),image=$('#flavor-image'),identity=$('#flavor-identity'),identityName=$('#flavor-identity-name'),title=$('#flavor-title'),eyebrow=$('#flavor-eyebrow'),description=$('#flavor-description'),counter=$('#flavor-count'),enquire=$('#flavor-enquire'),copy=$('#copy-flavor'),status=$('#copy-status');
 const rail=$('.flavor-rail'),buttons=$$('.flavor-rail__option'),groups=$$('.flight-groups__tab');
 const add=$('#add-to-flight'),tastingList=$('#tasting-list'),tastingStatus=$('#tasting-status'),tastingEmail=$('#tasting-email');
