@@ -30,3 +30,23 @@ test('AI routes to approved answer only, quota enforced, personal or safety ques
  const malformed=await resolve('ask','en',env,async(url)=>({ok:true,json:async()=>url.includes('upstash')?{result:1}:{candidates:[{content:{parts:[{text:'["not-approved"]'}]}}]}}));assert.equal(malformed.mode,'guide');
 });
 test('request validation',()=>{assert.equal(validate({message:''}),null);assert.equal(validate({message:'a'.repeat(601)}),null);assert.deepEqual(validate({message:' hi ',language:'fil'}),{message:'hi',lang:'fil'});assert.equal(validate({message:3}),null)});
+
+test('conversational greeting, follow-ups, language and honest handoff',async()=>{
+ const hi=await resolve('Hi','en',{});
+ assert.match(hi.reply,/^Hi! Welcome to Euroblend/);
+ assert.deepEqual(hi.actions,[]);
+ const product=await resolve('Ube Latte','en',{});
+ assert.equal(product.context.product,'Ube Latte');
+ const price=await resolve('How much?','en',{},fetch,product.context);
+ assert.match(price.reply,/confirmed price for Ube Latte/);
+ const other=await resolve('How about Ube Vanilla?','en',{},fetch,price.context);
+ assert.match(other.reply,/confirmed price for Ube Vanilla/);
+ const fil=await resolve('Magkano po?','en',{},fetch,other.context);
+ assert.equal(fil.language,'fil');assert.match(fil.reply,/Para sa Ube Vanilla/);
+ const thank=await resolve('Thank you!','en',{},fetch,fil.context);
+ assert.match(thank.reply,/You’re welcome/);assert.deepEqual(thank.actions,[]);
+ const honest=await resolve('Are you a bot?','en',{});
+ assert.match(honest.reply,/automated concierge/);
+ assert.match((await resolve('What do you mean?','en',{})).reply,/little more/);
+ assert.deepEqual(kb.contextOf({product:'not a product',topic:'__proto__'}),{product:null,topic:null});
+});
