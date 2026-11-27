@@ -18,3 +18,9 @@ jobs:
         run: node --check script.js
       - name: Check brand policy and product lineup
         run: node scripts/brand-check.mjs
+      - name: Check concierge scripts and API
+        run: |
+          node --check concierge.js
+          node --check concierge-knowledge.js
+          node --check api/concierge.js
+          node --test scripts/concierge.test.cjs

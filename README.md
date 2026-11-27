@@ -47,3 +47,19 @@ The site lacks a CRM-backed enquiry form, direct messaging deep link, and indepe
 ## Avoid misleading product colors (owner/product-team directive, November 23)
 
 The product team raised a customer-expectation issue: a generated Ube Salted Caramel drink photo shows a hue that buyers could expect from the actual item. Do not show that image or imply a prepared-beverage color that has not been verified. Ube Milk (Light Lavender), Ube Classic, Ube Vanilla and Ube Salted Caramel use restrained brand typography, not invented carton colors, drink hues or cup photography. The four other flavors retain existing owner-supplied packaging references. Restore a product photo only after the product team approves an accurate real-world photograph.
+
+## Euroblend Concierge
+
+The homepage and trade page include a bilingual question-and-answer concierge. The current approved product list is defined in `concierge-knowledge.js`; only grounded answer templates and approved contact links are returned. In guide mode, questions are matched to FAQ topics locally or by the Vercel API. In AI-assisted mode, Gemini classifies questions into approved FAQ topic IDs; it cannot supply unverified product facts, prices, claims or links. Missing configuration, budget exhaustion, provider failure and invalid output fall back to the verified guide. The UI explicitly labels the current mode.
+
+### Activation and operating limits
+
+- Production AI is off unless `CONCIERGE_AI_ENABLED=true` is explicitly set.
+- Inject `GEMINI_API_KEY` through the approved Vault-backed server-side secret workflow; never expose it to browser code or commit it.
+- Set `GEMINI_MODEL` to the approved and tested Gemini model identifier.
+- Provision an authorized Upstash Redis quota store, or adapt the limiter to an existing approved durable quota service. Set `CONCIERGE_REDIS_URL`, `CONCIERGE_REDIS_TOKEN` and `CONCIERGE_DAILY_LIMIT` (integer 1–500). AI requests fail closed without a valid atomic daily budget. Set the provider's own quota/billing limit as well.
+- The public API accepts only bounded JSON questions, limits output tokens and times out upstream requests. The daily cap is global, not a per-user abuse-control guarantee. Configure additional edge rate limiting before unrestricted AI activation.
+- No chat history or customer leads are persisted by the application. Questions may be sent to Gemini only when AI is enabled; do not enter private information or payment details. The app does not collect payment or submit orders. Confirm provider privacy terms and an appropriate public privacy notice before activation.
+- Maintain verified product facts in the knowledge file via reviewed pull requests. A separately authorized Supabase project, staff authentication, role-based administration, knowledge publishing workflow, analytics and retention rules are needed before adding an admin workspace or conversation persistence.
+- Prices, allergen and nutritional facts, preparation, availability, shipping, payment, FDA registration, commercial terms and product specifications remain unconfirmed. Keep them unpublished until the owner provides authoritative details.
+- Run `node --test scripts/concierge.test.cjs` and the existing brand guard; verify the deployed API in guide mode and actual Gemini calls only after approved credential and quota configuration. Confirm keyboard navigation, mobile rendering and both pages in a browser before claiming full QA.

@@ -1,0 +1,42 @@
+/* Euro Blend concierge — independent, accessible, mobile-first. */
+.eb-concierge{position:fixed;right:24px;bottom:24px;z-index:1000;font-family:'DM Sans',Arial,sans-serif;color:#302039;line-height:1.5}
+.eb-concierge *, .eb-concierge *:before,.eb-concierge *:after{box-sizing:border-box}
+.eb-concierge button,.eb-concierge input{font:inherit}
+.eb-concierge button{cursor:pointer}
+.eb-concierge button:focus-visible,.eb-concierge a:focus-visible,.eb-concierge input:focus-visible{outline:3px solid #b585b4;outline-offset:3px}
+.eb-launch{display:flex;align-items:center;gap:12px;text-align:left;padding:12px 20px 12px 12px;border:1px solid #73547a;background:#302039;color:#fff8ed;border-radius:50px;box-shadow:0 8px 30px #20172840;font-size:14px;font-weight:700;min-height:58px}
+.eb-launch small{display:block;font-size:10px;color:#e5bedf;font-weight:500;line-height:1.4}
+.eb-launch-icon{display:grid;place-items:center;width:34px;height:34px;border:1px solid #be9e84;border-radius:50%;font-size:21px;color:#f2dfbd}
+.eb-panel[hidden]{display:none!important}
+.eb-panel{position:absolute;right:0;bottom:76px;width:min(410px,calc(100vw - 32px));height:min(680px,calc(100dvh - 120px));max-height:calc(100vh - 120px);min-height:0;display:flex;flex-direction:column;background:#fdfaf5;border:1px solid #ddd0cf;border-radius:18px;overflow:hidden;box-shadow:0 18px 70px #21132650;color:#302039}
+.eb-head{display:flex;align-items:center;gap:12px;padding:17px;background:#302039;color:#fff8ed;flex:none}
+.eb-emblem{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;background:#f6e9d5;flex:none}
+.eb-emblem img{width:32px;height:34px;object-fit:contain}
+.eb-head strong{display:block;font-family:'Playfair Display',Georgia,serif;font-size:21px;font-weight:500;line-height:1.2}
+.eb-head small{display:block;font-size:10px;margin-top:5px;color:#e5bedf}
+.eb-close{margin-left:auto;flex:none;width:36px;height:40px;border:0;background:transparent;color:#fff8ed;font-size:26px!important;line-height:1}
+.eb-language{display:flex;align-items:center;gap:5px;padding:9px 12px;border-bottom:1px solid #e8dedb;flex:none}
+.eb-language button{border:0;border-radius:20px;padding:6px 9px;font-size:11px;background:transparent;color:#665064;min-height:32px}
+.eb-language button[aria-pressed=true]{background:#e9d9e6;color:#302039;font-weight:700}
+.eb-language .eb-reset{margin-left:auto;text-decoration:underline;white-space:nowrap}
+.eb-stream{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;padding:16px 14px;display:flex;flex-direction:column;gap:11px}
+.eb-message{max-width:94%;border-radius:12px;padding:12px 13px;overflow-wrap:anywhere;flex:none}
+.eb-assistant{align-self:flex-start;background:#eee5e9;color:#302039;border-bottom-left-radius:3px}
+.eb-user{align-self:flex-end;background:#4b3153;color:#fff8ed;border-bottom-right-radius:3px}
+.eb-speaker{display:block;font-size:9px;font-weight:700;letter-spacing:.10em;opacity:.76;margin-bottom:5px}
+.eb-message p{font-size:13px;line-height:1.6;margin:0;white-space:pre-wrap}
+.eb-links{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+.eb-links a{display:inline-block;padding:6px 8px;border:1px solid #b399b0;border-radius:5px;color:#48294e;font-size:11px;font-weight:700;text-decoration:none;background:#fdf8f5}
+.eb-suggestions{padding:0 14px 10px;display:flex;gap:6px;flex-wrap:wrap;flex:none}
+.eb-suggestions:empty{display:none}
+.eb-suggestions button{padding:7px 10px;border:1px solid #c9b5c5;border-radius:18px;background:#fffaf6;color:#4c3650;font-size:11px;min-height:33px;text-align:left}
+.eb-suggestions button:hover{background:#eadce7}
+.eb-form{display:flex;align-items:center;gap:8px;padding:10px 12px;border-top:1px solid #e5d9d8;flex:none}
+.eb-form input{min-width:0;flex:1;padding:11px 10px;background:#fff;border:1px solid #cdbec7;border-radius:8px;color:#302039;font-size:14px}
+.eb-form button{width:43px;height:43px;flex:none;border:0;border-radius:8px;background:#452b49;color:#fff8ed;font-size:22px}
+.eb-form button:disabled{opacity:.5;cursor:wait}
+.eb-privacy{font-size:10px;line-height:1.35;margin:0 14px 7px;color:#695a66;flex:none}
+.eb-human{display:block;padding:9px 14px 12px;font-size:11px;font-weight:700;color:#4b3153;text-align:center;border-top:1px solid #e8dedb;flex:none}
+.eb-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+@media(max-width:600px){.eb-concierge{right:12px;bottom:max(12px,env(safe-area-inset-bottom))}.eb-launch{padding:9px 14px 9px 9px;min-height:49px;font-size:12px}.eb-launch-icon{width:30px;height:30px}.eb-launch small{font-size:9px}.eb-panel{bottom:62px;width:calc(100vw - 24px);height:min(640px,calc(100dvh - 86px));max-height:calc(100vh - 86px);border-radius:14px}.eb-head{padding:13px}.eb-head strong{font-size:19px}.eb-stream{padding:12px}.eb-form input{font-size:16px}.eb-privacy{font-size:9px}.eb-suggestions{gap:5px}.eb-suggestions button{font-size:10px}}
+@media(max-height:440px){.eb-panel{bottom:0;height:calc(100dvh - 20px);max-height:calc(100vh - 20px)}.eb-head{padding:8px 12px}.eb-emblem{width:32px;height:32px}.eb-emblem img{width:23px;height:25px}.eb-suggestions{max-height:70px;overflow:auto}.eb-privacy{display:none}}
