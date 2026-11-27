@@ -1,0 +1,14 @@
+name: Vault gateway availability probe
+on:
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  gateway-probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 2
+    steps:
+      - name: Check existing gateway availability without credentials
+        run: |
+          curl --max-time 15 --silent --show-error --output /dev/null --write-out 'Gateway HTTP %{http_code}\n' 'https://jcyqixttuebxqqfkjonq.supabase.co/functions/v1/mcpmaster-supabase-control/gemini-worker/identity'
