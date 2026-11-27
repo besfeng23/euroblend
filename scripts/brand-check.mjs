@@ -27,16 +27,15 @@ for (const item of ['ube-salted-caramel','ube-milk','ube-classic','ube-vanilla']
  if (storefrontJS.includes("image:'"+item+"'")) problems.push('script.js: unapproved illustrative product image for '+item);
 }
 if (!home.includes('id="flavor-identity"')) problems.push('index.html: neutral visual fallback missing');
-// Keep every published list in the same canonical order, including the three distinct signature flavors.
+// Keep every published list in the same canonical order, as clarified by the owner on November 27.
 const lineup = [
  ['macchiato','Ube Macchiato','cafe','ube-macchiato'],
- ['criollo-cacao','Ube Criollo Cacao','cafe','ube-criollo-cacao'],
- ['criollo-salted-caramel','Ube Criollo with Salted Caramel','cafe','ube-criollo-salted-caramel'],
- ['salted-caramel','Ube Latte — Salted Caramel','velvet'],
- ['vanilla','Ube Latte — Vanilla','velvet'],
- ['light-lavender','Ube Latte — Light Lavender','signature'],
- ['classic','Ube Latte — Classic Ube','signature'],
- ['latte','Ube Latte — Deep Ube','signature','ube-latte'],
+ ['criollo-cacao','Ube Criollo','cafe','ube-criollo-cacao'],
+ ['criollo-salted-caramel','Ube Criollo Salted Caramel','cafe','ube-criollo-salted-caramel'],
+ ['salted-caramel','Ube Salted Caramel','velvet'],
+ ['vanilla','Ube Vanilla','velvet'],
+ ['classic','Ube Classic','signature'],
+ ['latte','Ube Latte','signature','ube-latte'],
  ['milk','Ube Milk','milk']
 ];
 const names=lineup.map(([,name])=>name);
@@ -61,16 +60,21 @@ try {
 } catch {problems.push('index.html: invalid collection JSON-LD')}
 const features=[...home.matchAll(/data-feature-flavor="(\d+)" aria-label="Explore ([^"]+)"/g)].map(m=>[Number(m[1]),m[2]]);
 same('index.html packaging links',features,names.slice(0,3).map((n,i)=>[i,n]));
-const faq=home.match(/<summary>What are the nine Euro Blend flavors\?.*?<\/summary><p>(.*?)<\/p>/)?.[1];
+const faq=home.match(/<summary>What are the eight Euro Blend flavors\?.*?<\/summary><p>(.*?)<\/p>/)?.[1];
 same('index.html FAQ',faq,names.slice(0,-1).join(', ')+', and '+names.at(-1)+'.');
 const trade=readFileSync('trade.html','utf8');
 const tradeList=trade.match(/<div class="trade-list">(.*?)<\/div><p class="trade-note">/s)?.[1]||'';
 same('trade.html lineup',[...tradeList.matchAll(/<div><span>(\d+)<\/span><strong>([^<]+)<\/strong><\/div>/g)].map(m=>[Number(m[1]),m[2]]),names.map((n,i)=>[i+1,n]));
 const readme=readFileSync('README.md','utf8');
-const docs=readme.match(/### Canonical nine product names\n\n([\s\S]*?)\n\n/)?.[1]||'';
+const docs=readme.match(/### Canonical eight product names\n\n([\s\S]*?)\n\n/)?.[1]||'';
 same('README.md lineup',[...docs.matchAll(/^(\d+)\. (.+)$/gm)].map(m=>[Number(m[1]),m[2]]),names.map((n,i)=>[i+1,n]));
 for(const [file,source] of [['index.html',home],['trade.html',trade],['script.js',storefrontJS]]) {
- if(/\beight(?:[- ](?:distinct[- ])?flavors?)?\b/i.test(source))problems.push(file+': stale eight-flavor copy');
+ if(/\bnine(?:[- ](?:distinct[- ])?flavors?)?\b/i.test(source))problems.push(file+': stale nine-flavor copy');
+}
+// A querySelector result is a single element, never a collection.
+// Prevent the menu initialization regression missed by syntax-only checks.
+if (/\$\([^\n]+?\)\.forEach\(/.test(storefrontJS.replace(/\$\$/g,'__all__'))) {
+  problems.push('script.js: single-element selector incorrectly used as a collection');
 }
 if(problems.length){console.error(problems.join('\n'));process.exit(1)}
 console.log('Brand spelling, public-contact and lineup checks passed. Rasterized packaging text requires visual inspection.');
