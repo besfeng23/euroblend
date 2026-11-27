@@ -6,10 +6,10 @@ root.innerHTML='<button class="eb-launch" type="button" aria-expanded="false" ar
 document.body.append(root);
 const $=s=>root.querySelector(s);
 const panel=$('.eb-panel'),launch=$('.eb-launch'),close=$('.eb-close'),stream=$('.eb-stream'),suggestions=$('.eb-suggestions'),input=$('#eb-question'),form=$('.eb-form'),mode=$('#eb-mode'),send=form.querySelector('button');
-let lang='en',busy=false,version=0,lastAsked=0;
+let lang='en',busy=false,version=0,lastAsked=0,context={};
 const texts={
-en:{welcome:'Welcome to Euroblend. Let me help you discover our collection, choose a flavor or enquire about orders and business partnerships.',questions:['Explore the flavors','Help me choose a flavor','Prices and ordering','Preparation and ingredients','Become a reseller'],placeholder:'Ask about flavors, prices, orders…',working:'Finding the right information…',guide:'Verified product guide',ai:'AI-assisted · verified answers',local:'Verified guide · offline',links:{collection:'Explore collection',trade:'Business enquiries',contact:'Contact our team'}},
-fil:{welcome:'Welcome sa Euroblend. Tutulungan kitang tuklasin ang collection, pumili ng flavor o magtanong tungkol sa orders at business partnerships.',questions:['Ano ang mga variants?','Alin ang masarap subukan?','Magkano at paano bumili?','Paano timplahin at ano ang sangkap?','Paano maging reseller?'],placeholder:'Magtanong tungkol sa flavors, presyo, orders…',working:'Hinahanap ang tamang impormasyon…',guide:'Verified product guide',ai:'AI-assisted · verified answers',local:'Verified guide · offline',links:{collection:'Tingnan ang collection',trade:'Business enquiries',contact:'Kausapin ang team'}}
+en:{welcome:'Hi! Welcome to Euroblend. What brings you here today — finding a new favorite drink, ordering, or exploring a business partnership?',questions:['Explore the flavors','Help me choose a flavor','Prices and ordering','Preparation and ingredients','Become a reseller'],placeholder:'Ask about flavors, prices, orders…',working:'Finding the right information…',guide:'Verified product guide',ai:'AI-assisted · verified answers',local:'Verified guide · offline',links:{collection:'Explore collection',trade:'Business enquiries',contact:'Contact our team'}},
+fil:{welcome:'Hi! Welcome sa Euroblend. Anong hanap mo ngayon — bagong favorite drink, order, o business partnership?',questions:['Ano ang mga variants?','Alin ang masarap subukan?','Magkano at paano bumili?','Paano timplahin at ano ang sangkap?','Paano maging reseller?'],placeholder:'Magtanong tungkol sa flavors, presyo, orders…',working:'Hinahanap ang tamang impormasyon…',guide:'Verified product guide',ai:'AI-assisted · verified answers',local:'Verified guide · offline',links:{collection:'Tingnan ang collection',trade:'Business enquiries',contact:'Kausapin ang team'}}
 };
 const destinations={collection:'/#flavors',trade:'/trade',contact:'https://www.facebook.com/share/1deLJW2QHp/'};
 function message(role,text,actions=[]){
@@ -23,19 +23,19 @@ function message(role,text,actions=[]){
 }
 function setOpen(open){panel.hidden=!open;launch.setAttribute('aria-expanded',String(open));if(open){input.focus({preventScroll:true});stream.scrollTop=stream.scrollHeight}else launch.focus({preventScroll:true})}
 function renderSuggestions(){suggestions.replaceChildren();for(const q of texts[lang].questions){const b=document.createElement('button');b.type='button';b.textContent=q;b.addEventListener('click',()=>ask(q));suggestions.append(b)}}
-function reset(){version++;busy=false;send.disabled=false;stream.replaceChildren();mode.textContent=texts[lang].guide;input.value='';input.placeholder=texts[lang].placeholder;message('assistant',texts[lang].welcome);renderSuggestions()}
+function reset(){version++;context={};lastAsked=0;busy=false;send.disabled=false;stream.replaceChildren();mode.textContent=texts[lang].guide;input.value='';input.placeholder=texts[lang].placeholder;message('assistant',texts[lang].welcome);renderSuggestions()}
 async function ask(raw){
  const q=String(raw||'').trim().slice(0,600);if(!q||busy||Date.now()-lastAsked<800)return;
  lastAsked=Date.now();busy=true;send.disabled=true;input.value='';suggestions.replaceChildren();message('user',q);
  const pending=message('assistant',texts[lang].working);const turn=version,language=lang;
  let result,offline=false;
  try{
-  const response=await fetch('/api/concierge',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:q,language}),signal:AbortSignal.timeout(11000)});
+  const response=await fetch('/api/concierge',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:q,language,context}),signal:AbortSignal.timeout(11000)});
   if(!response.ok)throw Error('Unavailable');
   result=await response.json();if(typeof result.reply!=='string'||!Array.isArray(result.actions))throw Error('Invalid response');
- }catch{offline=true;result=kb.answer(kb.classify(q),language)}
+ }catch{offline=true;result=kb.respond(q,language,context)}
  if(turn!==version)return;
- pending.remove();message('assistant',result.reply,result.actions);mode.textContent=offline?texts[lang].local:result.mode==='ai'?texts[lang].ai:texts[lang].guide;
+ context=kb.contextOf(result.context);pending.remove();message('assistant',result.reply,result.actions);mode.textContent=offline?texts[lang].local:result.mode==='ai'?texts[lang].ai:texts[lang].guide;
  busy=false;send.disabled=false;if(!panel.hidden)input.focus({preventScroll:true});
 }
 launch.addEventListener('click',()=>setOpen(panel.hidden));close.addEventListener('click',()=>setOpen(false));
