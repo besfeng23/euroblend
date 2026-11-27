@@ -72,5 +72,10 @@ same('README.md lineup',[...docs.matchAll(/^(\d+)\. (.+)$/gm)].map(m=>[Number(m[
 for(const [file,source] of [['index.html',home],['trade.html',trade],['script.js',storefrontJS]]) {
  if(/\beight(?:[- ](?:distinct[- ])?flavors?)?\b/i.test(source))problems.push(file+': stale eight-flavor copy');
 }
+// A querySelector result is a single element, never a collection.
+// Prevent the menu initialization regression missed by syntax-only checks.
+if (/\$\([^\n]+?\)\.forEach\(/.test(storefrontJS.replace(/\$\$/g,'__all__'))) {
+  problems.push('script.js: single-element selector incorrectly used as a collection');
+}
 if(problems.length){console.error(problems.join('\n'));process.exit(1)}
 console.log('Brand spelling, public-contact and lineup checks passed. Rasterized packaging text requires visual inspection.');
