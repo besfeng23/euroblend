@@ -61,3 +61,23 @@ test('Gemini can compose discovery dialogue but cannot override confirmed facts'
  const facts=await resolve('How much is Ube Latte?','en',env,mock(['price'],'It costs 100 pesos.'));
  assert.match(facts.reply,/confirmed price for Ube Latte/);
 });
+
+test('a coherent customer journey keeps intent, preference and quantity',async()=>{
+ let r=await resolve('For myself','en',{});
+ assert.equal(r.context.goal,'personal');assert.match(r.reply,/What kind of flavor/);
+ r=await resolve('I like vanilla','en',{},fetch,r.context);
+ assert.equal(r.context.product,'Ube Vanilla');assert.equal(r.context.preference,'vanilla');
+ assert.match(r.reply,/Ube Vanilla/);assert.equal(r.context.pending,'order');
+ r=await resolve('Yes please','en',{},fetch,r.context);
+ assert.equal(r.topics[0],'order');assert.match(r.reply,/For Ube Vanilla/);
+ r=await resolve('How much?','en',{},fetch,r.context);
+ assert.match(r.reply,/confirmed price for Ube Vanilla/);
+ r=await resolve('2 boxes','en',{},fetch,r.context);
+ assert.equal(r.context.quantity,2);assert.match(r.reply,/2 boxes of Ube Vanilla/);
+ assert.doesNotMatch(r.reply,/order (?:placed|confirmed)/i);
+ assert.ok(r.context.recentTopics.length<=4);
+ const b=await resolve('For my cafe','en',{});
+ assert.equal(b.context.goal,'business');assert.match(b.reply,/What kind of business/);
+ assert.equal(kb.contextOf({quantity:-5,goal:'invalid',preference:'random',recentTopics:['price','__proto__','order']}).quantity,undefined);
+ assert.deepEqual(kb.contextOf({recentTopics:['price','__proto__','order']}).recentTopics,['price','order']);
+});
