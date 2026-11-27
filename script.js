@@ -152,9 +152,9 @@ function setMood(mood){
  const active=mood==='purple-hour'?'purple-hour':'morning';document.body.dataset.mood=active;
  moodButtons.forEach(b=>{const on=b.dataset.moodChoice===active;b.classList.toggle('is-active',on);b.setAttribute('aria-pressed',String(on))});
  $('#hero-strap').textContent=active==='morning'?'A FILIPINO FAVORITE, REIMAGINED':'AN EVENING MOOD, A FAMILIAR FLAVOR';
- $('#hero-script').textContent=active==='morning'?'the everyday, elevated.':'after hours.';
- $('#hero-lead').textContent=active==='morning'?'Inspired by the flavors Filipinos love. A collection made to discover, one blend at a time.':'Some moments call for something different. Explore nine flavors in a richer evening atmosphere.';
- $('#photo-tag').textContent=active==='morning'?'START HERE':'THE EVENING EDIT';
+ $('#hero-script').textContent=active==='morning'?'beautifully different.':'a different kind of evening.';
+ $('#hero-lead').textContent=active==='morning'?'A Filipino favorite, expressed in nine distinctive café-inspired beverages. Discover the Euro Blend collection.':'Discover the same Euro Blend collection in a richer evening atmosphere.';
+ $('#photo-tag').textContent=active==='morning'?'SIGNATURE COLLECTION':'THE EVENING EDIT';
  $('#photo-feature').textContent=active==='morning'?'Ube Latte — Deep Ube':'Ube Criollo with Salted Caramel';
  $('#browser-theme-color').setAttribute('content',active==='morning'?'#faf6ed':'#18131b');
  if(active==='purple-hour'){$('.hero__photo-night').loading='eager'}
