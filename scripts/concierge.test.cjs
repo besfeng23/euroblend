@@ -50,3 +50,14 @@ test('conversational greeting, follow-ups, language and honest handoff',async()=
  assert.match((await resolve('What do you mean?','en',{})).reply,/little more/);
  assert.deepEqual(kb.contextOf({product:'not a product',topic:'__proto__'}),{product:null,topic:null});
 });
+
+test('Gemini can compose discovery dialogue but cannot override confirmed facts',async()=>{
+ const env={CONCIERGE_AI_ENABLED:'true',GEMINI_API_KEY:'mock',GEMINI_MODEL:'gemini-test',CONCIERGE_DAILY_LIMIT:'2',CONCIERGE_REDIS_URL:'https://example.upstash.io',CONCIERGE_REDIS_TOKEN:'mock'};
+ const mock=(topics,reply)=>async(url)=>({ok:true,json:async()=>url.includes('upstash')?{result:1}:{candidates:[{content:{parts:[{text:JSON.stringify({topics,reply})}]}}]}});
+ const discovery=await resolve('Can you suggest something?','en',env,mock(['recommend'],'Of course! Do you usually go for vanilla or salted caramel?'));
+ assert.equal(discovery.reply,'Of course! Do you usually go for vanilla or salted caramel?');
+ const unsafe=await resolve('Can you suggest something?','en',env,mock(['recommend'],'It is caffeine free and costs ₱100.'));
+ assert.doesNotMatch(unsafe.reply,/caffeine free|₱100/);
+ const facts=await resolve('How much is Ube Latte?','en',env,mock(['price'],'It costs 100 pesos.'));
+ assert.match(facts.reply,/confirmed price for Ube Latte/);
+});
