@@ -67,9 +67,9 @@ function respond(message,preferred,previous={},selected){
  // Social turns should never be routed to brand copy or an irrelevant sales link.
  if(['greeting','thanks','identity'].includes(local[0]))topics=local;
  if(topics[0]==='unknown'&&named)topics=[prior.topic==='recommend'?'recommend':'catalog'];
- if(named&&prior.topic==='recommend'&&topics.every(x=>['catalog','milk','unknown'].includes(x)))topics=['recommend'];
+ if(named&&prior.topic==='recommend'&&topics.every(x=>['catalog','milk','unknown','brand'].includes(x)))topics=['recommend'];
  if(topics[0]==='unknown'&&/^(?:what about|how about|and|paano naman|eh|ito|iyon|that one)\b/i.test(q)&&prior.topic)topics=[prior.topic];
- if(named&&prior.topic&&['price','order','prepare','delivery','pack','ingredients','allergens','nutrition','taste'].includes(prior.topic)&&topics.every(x=>['catalog','milk','unknown'].includes(x))&&!/\b(what is|ano ang|variants|flavou?rs|list|collection|menu)\b/i.test(q))topics=[prior.topic];
+ if(named&&prior.topic&&['price','order','prepare','delivery','pack','ingredients','allergens','nutrition','taste'].includes(prior.topic)&&topics.every(x=>['catalog','milk','unknown','brand'].includes(x))&&!/\b(what is|ano ang|variants|flavou?rs|list|collection|menu)\b/i.test(q))topics=[prior.topic];
  // Avoid mixing broad product-name matches with the specific customer question.
  if(topics.length>1&&topics.some(x=>!['catalog','brand','milk'].includes(x)))topics=topics.filter(x=>!['catalog','brand','milk'].includes(x));
  const result=answer(topics,lang);let reply=result.reply;
