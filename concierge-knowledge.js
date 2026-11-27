@@ -59,11 +59,30 @@ function productIn(message){return aliases.find(([,re])=>re.test(message))?.[0]|
 function classify(message){const q=String(message||'').trim().slice(0,600);if(/^(?:hi|hello|hey|good (?:morning|afternoon|evening)|kumusta|kamusta|magandang (?:umaga|hapon|gabi))(?: there| po)?[!.?\s]*$/i.test(q))return ['greeting'];if(/^(?:thanks|thank you|salamat|maraming salamat)(?: po| so much)?[!.?\s]*$/i.test(q))return ['thanks'];if(/^(?:yes|no|sure|okay|ok|opo|oo|sige|hindi)[!.?\s]*$/i.test(q))return ['clarify'];const ids=rules.filter(([,re])=>re.test(q)).map(([id])=>id);return ids.length?ids.slice(0,2):['unknown']}
 function language(value){return value==='fil'?'fil':'en'}
 function inferLanguage(message,preferred){if(preferred==='fil')return 'fil';return /\b(?:magkano|presyo|paano|saan|ano|alin|gusto|meron|mayroon|salamat|po|opo|kumusta|kamusta|timpla\w*|bibili|mabibili)\b/i.test(message)?'fil':'en'}
-function contextOf(value){return {product:products.includes(value?.product)?value.product:null,topic:Object.prototype.hasOwnProperty.call(entries,value?.topic)?value.topic:null}}
+function contextOf(value){
+ const ctx={product:products.includes(value?.product)?value.product:null,topic:Object.prototype.hasOwnProperty.call(entries,value?.topic)?value.topic:null};
+ if(['personal','business'].includes(value?.goal))ctx.goal=value.goal;
+ if(Number.isSafeInteger(value?.quantity)&&value.quantity>=1&&value.quantity<=10000)ctx.quantity=value.quantity;
+ if(['vanilla','salted caramel','classic ube','café-inspired'].includes(value?.preference))ctx.preference=value.preference;
+ return ctx;
+}
 function answer(ids,lang){lang=language(lang);const safe=[...new Set(Array.isArray(ids)?ids.filter(id=>Object.prototype.hasOwnProperty.call(entries,id)):[])].slice(0,2);if(!safe.length)safe.push('unknown');return {reply:safe.map(id=>entries[id][lang]).join('\n\n'),actions:[...new Set(safe.map(id=>entries[id].action).filter(Boolean))],topics:safe}}
 function respond(message,preferred,previous={},selected){
  const q=String(message||'').trim().slice(0,600),lang=inferLanguage(q,preferred),fil=lang==='fil',prior=contextOf(previous),named=productIn(q),product=named||prior.product;
  const local=classify(q);let topics=selected||local;
+ const next={...prior,product};
+ if(/\b(?:for (?:myself|me|my family)|personal use|sarili ko|para sa akin)\b/i.test(q))next.goal='personal';
+ if(/\b(?:my (?:cafe|café|shop|hotel|restaurant|business)|resell\w*|distribut\w*|wholesale|negosyo)\b/i.test(q))next.goal='business';
+ const quantity=q.match(/\b([1-9]\d{0,3})\s*(?:boxes|box|cartons|kahon)\b/i);
+ if(quantity)next.quantity=Number(quantity[1]);
+ if(/\b(?:like|love|prefer|gusto|type)\b/i.test(q)&&named){
+  const p=named==='Ube Vanilla'?'vanilla':named==='Ube Salted Caramel'||named==='Ube Criollo Salted Caramel'?'salted caramel':named==='Ube Classic'?'classic ube':named==='Ube Macchiato'||named==='Ube Criollo'?'café-inspired':null;
+  if(p)next.preference=p;
+ }
+ if(!selected&&next.goal==='personal'&&next.goal!==prior.goal&&local.every(x=>['unknown','brand'].includes(x)))topics=['recommend'];
+ if(!selected&&next.goal==='business'&&next.goal!==prior.goal&&local.every(x=>['unknown','brand','trade'].includes(x)))topics=['trade'];
+ if(!selected&&next.preference&&next.preference!==prior.preference&&local.every(x=>['unknown','catalog','brand','recommend'].includes(x)))topics=['recommend'];
+ if(quantity&&['price','order','trade'].includes(prior.topic)&&local.every(x=>['unknown','pack','brand'].includes(x)))topics=[prior.topic];
  // Social turns should never be routed to brand copy or an irrelevant sales link.
  if(['greeting','thanks','identity'].includes(local[0]))topics=local;
  if(topics[0]==='unknown'&&named)topics=[prior.topic==='recommend'?'recommend':'catalog'];
@@ -79,10 +98,12 @@ function respond(message,preferred,previous={},selected){
   if(/\b(vanilla|salted caramel|macchiato|criollo|latte|ube milk|classic|light lavender)\b/i.test(q)&&named)reply=fil?'Kung '+named+' ang gusto mong subukan, magandang simulan sa variant na iyon. Gusto mo bang malaman kung paano ito i-order?':'If '+named+' is the flavor direction you like, that’s a good place to start. Would you like help ordering it?';
   else reply=fil?'Anong flavor ang mas type mo — classic ube, vanilla, salted caramel, o café-inspired? Tutulungan kitang maghanap sa collection.':'What kind of flavor do you usually enjoy — classic ube, vanilla, salted caramel, or something café-inspired? I can help narrow it down.';
  }
+ if(topic==='price'&&next.quantity)reply=fil?'Noted, '+next.quantity+' box'+(product?' ng '+product:'')+'. Wala pa akong confirmed na presyo. Maaari mong ipadala ang quantity na ito sa team para sa quotation.':'Got it — '+next.quantity+' boxes'+(product?' of '+product:'')+'. I don’t have confirmed pricing yet, but you can send those details to our team for a quotation.';
+ if(topic==='trade'&&next.goal==='business')reply=fil?'Sige, matutulungan kitang maghanda ng business enquiry. '+(next.quantity?'Noted ang '+next.quantity+' boxes. ':'')+'Anong klaseng business ang meron ka, at saang lugar?':'I can help you prepare a business enquiry. '+(next.quantity?'I’ve noted the '+next.quantity+' boxes. ':'')+'What kind of business do you run, and where is it located?';
  if(topic==='unknown')reply=fil?'Gusto kong makatulong. Maaari mo bang sabihin kung anong variant o detalye ang tinutukoy mo?':'I’d like to help. Could you tell me a little more about what you’re looking for?';
  if(topic==='catalog'&&named&&!/\b(variants|flavou?rs|list|collection|menu|walo)\b/i.test(q))reply=fil?named+' ay bahagi ng walong variants ng Euroblend. Ano ang gusto mong malaman tungkol dito — presyo, flavor, o paano bumili?':named+' is part of Euroblend’s eight-variant collection. What would you like to know about it — price, flavor, or how to order?';
  if(result.topics.length>1&&reply!==result.reply)reply+='\n\n'+entries[result.topics[1]][lang];
- return {...result,reply,language:lang,context:{product,topic:['greeting','thanks','identity','unknown','clarify'].includes(topic)?prior.topic:topic}};
+ return {...result,reply,language:lang,context:{...next,topic:['greeting','thanks','identity','unknown','clarify'].includes(topic)?prior.topic:topic}};
 }
 return {products,entries,classify,answer,language,inferLanguage,contextOf,respond};
 });
