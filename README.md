@@ -7,19 +7,18 @@ Source: https://github.com/besfeng23/euroblend
 
 Euro Blend is a premium Philippine-market beverage presentation. It is a static Vercel website with the home collection and a hospitality/trade information page. Buyers can copy an enquiry and open the official Euro Blend Facebook page. This site does not accept payment, transmit orders, or store customer enquiries.
 
-### Canonical nine product names
+### Canonical eight product names
 
 1. Ube Macchiato
-2. Ube Criollo Cacao
-3. Ube Criollo with Salted Caramel
-4. Ube Latte — Salted Caramel
-5. Ube Latte — Vanilla
-6. Ube Latte — Light Lavender
-7. Ube Latte — Classic Ube
-8. Ube Latte — Deep Ube
-9. Ube Milk
+2. Ube Criollo
+3. Ube Criollo Salted Caramel
+4. Ube Salted Caramel
+5. Ube Vanilla
+6. Ube Classic
+7. Ube Latte
+8. Ube Milk
 
-Groups: Café & Cacao (1–3), Flavored Latte (4–5), Signature Latte (6–8), and Ube Milk (9).
+Groups: Café & Criollo (1–3), Flavored Ube (4–5), Signature Collection (6–7), and Ube Milk (8).
 
 **Criollo is the correct spelling** of the cacao variety term. Never introduce its transposed misspelling. Naming does not establish that any ingredient actually comes from a verified Criollo cultivar; supplier evidence is required before making provenance claims.
 
@@ -28,11 +27,11 @@ Groups: Café & Cacao (1–3), Flavored Latte (4–5), Signature Latte (6–8), 
 - Only **EURO BLEND** is permitted in public-facing identity and product imagery.
 - The retired four-digit numeric prefix is blacklisted. Do not put it in UI, email addresses, filenames, advertising, alt text, social cards, or future packaging. The repository includes an automated brand-guard check to catch text regressions.
 - The old Gmail inbox contained that prefix and is not a permitted published contact. **Do not invent a replacement email.** The official owner-supplied Facebook page is the temporary contact path, including hospitality enquiries.
-- Owner confirmation (November 24, 2026): Light Lavender, Classic Ube and Deep Ube are distinct flavors, and Ube Milk remains in the collection. Use the approved site spelling and brand name; preserve existing artwork and colors until the planned logo revision.
+- Owner clarification (November 27, 2026): Light Lavender identifies Ube Milk, not a separate product. The final count is eight. This supersedes the November 24 lineup. Use approved artwork and colors unchanged.
 
 ### Product photography
 
-Existing optimized carton/sachet imagery is reused for Ube Latte — Deep Ube (the existing Deep Ube editorial image set), Ube Macchiato, Ube Criollo Cacao, and Ube Criollo with Salted Caramel. The other five products use typography only pending matching approved imagery. Source images, design derivatives, and physical retail packaging must not be conflated. Prefer natural linen, warm ivory, subdued plum/cacao, legible complete packages, and calm compositions. Do not crop or obstruct package labels.
+Existing optimized carton/sachet imagery is reused for Ube Latte (the existing Deep Ube editorial image set), Ube Macchiato, Ube Criollo, and Ube Criollo Salted Caramel. The other four products use typography only pending matching approved imagery. Source images, design derivatives, and physical retail packaging must not be conflated. Prefer natural linen, warm ivory, subdued plum/cacao, legible complete packages, and calm compositions. Do not crop or obstruct package labels.
 
 ### Release and claims policy
 
@@ -47,4 +46,4 @@ The site lacks a CRM-backed enquiry form, direct messaging deep link, and indepe
 
 ## Avoid misleading product colors (owner/product-team directive, November 23)
 
-The product team raised a customer-expectation issue: a generated Ube Latte — Salted Caramel drink photo shows a hue that buyers could expect from the actual item. Do not show that image or imply a prepared-beverage color that has not been verified. Ube Milk, Ube Latte — Classic Ube, Ube Latte — Light Lavender, Ube Latte — Vanilla and Ube Latte — Salted Caramel use restrained brand typography, not invented carton colors, drink hues or cup photography. The four other flavors retain existing owner-supplied packaging references. Restore a product photo only after the product team approves an accurate real-world photograph.
+The product team raised a customer-expectation issue: a generated Ube Salted Caramel drink photo shows a hue that buyers could expect from the actual item. Do not show that image or imply a prepared-beverage color that has not been verified. Ube Milk (Light Lavender), Ube Classic, Ube Vanilla and Ube Salted Caramel use restrained brand typography, not invented carton colors, drink hues or cup photography. The four other flavors retain existing owner-supplied packaging references. Restore a product photo only after the product team approves an accurate real-world photograph.
