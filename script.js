@@ -13,14 +13,13 @@ if(menu&&nav){
 const year=$('#year');if(year)year.textContent=String(new Date().getFullYear());
 const flavors=[
  {key:'macchiato',name:'Ube Macchiato',html:'Ube<br>Macchiato',eyebrow:'THE CAFÉ EDIT',description:'A macchiato-inspired ube pairing.',image:'ube-macchiato',width:1000,family:'cafe'},
- {key:'criollo-cacao',name:'Ube Criollo Cacao',html:'Ube Criollo<br>Cacao',eyebrow:'THE CACAO EDIT',description:'An ube and cacao flavor in the Euro Blend collection.',image:'ube-criollo-cacao',width:1000,family:'cafe'},
- {key:'criollo-salted-caramel',name:'Ube Criollo with Salted Caramel',html:'Ube Criollo<br>with Salted Caramel',eyebrow:'THE UNEXPECTED PAIRING',description:'A cacao-inspired pairing with a salted caramel twist.',image:'ube-criollo-salted-caramel',width:1000,family:'cafe'},
- {key:'salted-caramel',name:'Ube Latte — Salted Caramel',html:'Ube Latte —<br>Salted Caramel',eyebrow:'SWEET MEETS SALTY',description:'An ube latte with salted caramel flavor.',family:'velvet'},
- {key:'vanilla',name:'Ube Latte — Vanilla',html:'Ube Latte —<br>Vanilla',eyebrow:'A FAMILIAR PAIRING',description:'An ube latte with vanilla flavor.',family:'velvet'},
- {key:'light-lavender',name:'Ube Latte — Light Lavender',html:'Ube Latte —<br>Light Lavender',eyebrow:'THE SIGNATURE',description:'The Light Lavender flavor in the signature Ube Latte collection.',family:'signature'},
- {key:'classic',name:'Ube Latte — Classic Ube',html:'Ube Latte —<br>Classic Ube',eyebrow:'FAMILIAR AT HEART',description:'The Classic Ube flavor in the signature Ube Latte collection.',family:'signature'},
- {key:'latte',name:'Ube Latte — Deep Ube',html:'Ube Latte —<br>Deep Ube',eyebrow:'THE SIGNATURE',description:'The Deep Ube flavor in the signature Ube Latte collection.',image:'ube-latte',width:1122,family:'signature'},
- {key:'milk',name:'Ube Milk',html:'Ube<br>Milk',eyebrow:'A GENTLER MOMENT',description:'A milk-inspired pairing in the Euro Blend ube collection.',family:'milk'}
+ {key:'criollo-cacao',name:'Ube Criollo',html:'Ube<br>Criollo',eyebrow:'THE CACAO EDIT',description:'An ube and cacao flavor in the Euro Blend collection.',image:'ube-criollo-cacao',width:1000,family:'cafe'},
+ {key:'criollo-salted-caramel',name:'Ube Criollo Salted Caramel',html:'Ube Criollo<br>Salted Caramel',eyebrow:'THE UNEXPECTED PAIRING',description:'A cacao-inspired pairing with a salted caramel twist.',image:'ube-criollo-salted-caramel',width:1000,family:'cafe'},
+ {key:'salted-caramel',name:'Ube Salted Caramel',html:'Ube<br>Salted Caramel',eyebrow:'SWEET MEETS SALTY',description:'An ube and salted caramel flavor.',family:'velvet'},
+ {key:'vanilla',name:'Ube Vanilla',html:'Ube<br>Vanilla',eyebrow:'A FAMILIAR PAIRING',description:'An ube and vanilla flavor.',family:'velvet'},
+ {key:'classic',name:'Ube Classic',html:'Ube<br>Classic',eyebrow:'FAMILIAR AT HEART',description:'The Ube Classic variant in the Euro Blend collection.',family:'signature'},
+ {key:'latte',name:'Ube Latte',html:'Ube<br>Latte',eyebrow:'THE SIGNATURE',description:'The Ube Latte variant in the Euro Blend collection.',image:'ube-latte',width:1122,family:'signature'},
+ {key:'milk',name:'Ube Milk',html:'Ube<br>Milk',eyebrow:'A GENTLER MOMENT',description:'Light Lavender identifies the Ube Milk variant.',family:'milk'}
 ];
 if(!$('#flavor-showcase'))return; // Trade page shares navigation, not the interactive home showcase.
 const brandFilm=$('#brand-film-video'),brandFilmPlay=$('#brand-film-play');
@@ -153,9 +152,9 @@ function setMood(mood){
  moodButtons.forEach(b=>{const on=b.dataset.moodChoice===active;b.classList.toggle('is-active',on);b.setAttribute('aria-pressed',String(on))});
  $('#hero-strap').textContent=active==='morning'?'A FILIPINO FAVORITE, REIMAGINED':'AN EVENING MOOD, A FAMILIAR FLAVOR';
  $('#hero-script').textContent=active==='morning'?'beautifully different.':'a different kind of evening.';
- $('#hero-lead').textContent=active==='morning'?'A Filipino favorite, expressed in nine distinctive café-inspired beverages. Discover the Euro Blend collection.':'Discover the same Euro Blend collection in a richer evening atmosphere.';
+ $('#hero-lead').textContent=active==='morning'?'A Filipino favorite, expressed in eight distinctive café-inspired beverages. Discover the Euro Blend collection.':'Discover the same Euro Blend collection in a richer evening atmosphere.';
  $('#photo-tag').textContent=active==='morning'?'SIGNATURE COLLECTION':'THE EVENING EDIT';
- $('#photo-feature').textContent=active==='morning'?'Ube Latte — Deep Ube':'Ube Criollo with Salted Caramel';
+ $('#photo-feature').textContent=active==='morning'?'Ube Latte':'Ube Criollo Salted Caramel';
  $('#browser-theme-color').setAttribute('content',active==='morning'?'#faf6ed':'#18131b');
  if(active==='purple-hour'){$('.hero__photo-night').loading='eager'}
  try{localStorage.setItem('euroblend-mood',active)}catch{}
