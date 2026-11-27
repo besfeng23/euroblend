@@ -421,3 +421,95 @@ body[data-mood="purple-hour"] .packaging-gallery{border-color:#62495e}
  .showcase__main h3{font-size:clamp(40px,11vw,66px)}
  .brand-film{padding-block:38px 48px}
 }
+
+/* Campaign art direction: rich aubergine, warm gold and actual collection artwork.
+   The ube image is decorative brand atmosphere, not an asserted ingredient or product photo. */
+.hero,body[data-mood="purple-hour"] .hero{background:#302039;color:#fff8ee}
+.hero:before,body[data-mood="purple-hour"] .hero:before{background:radial-gradient(ellipse at 60% 40%,#705078,transparent 72%);opacity:.32}
+.hero__grid{grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);gap:clamp(24px,4.2vw,70px);min-height:0;padding-block:clamp(40px,5vw,72px)}
+.hero__copy{padding:0;min-width:0}
+.hero .kicker,body[data-mood="purple-hour"] .hero .kicker{color:#e5c99e;letter-spacing:.15em}
+.hero h1{margin:25px 0 24px}
+.hero__big,body[data-mood="purple-hour"] .hero__big{color:#fff9ef;font:500 clamp(89px,11vw,170px)/.91 var(--display);letter-spacing:-.075em}
+.hero__script,body[data-mood="purple-hour"] .hero__script{color:#e5bedf;font:italic 500 clamp(39px,4.6vw,70px)/1.06 var(--display);letter-spacing:-.055em;max-width:9em;margin-top:10px}
+.hero__lead,body[data-mood="purple-hour"] .hero__lead{color:#eadce7;max-width:395px;line-height:1.75;font-size:15px;margin-bottom:24px}
+.hero .btn--purple{background:#f2dfbd;color:#34243a;min-height:54px}
+.hero .btn--purple:hover{background:#fff0d6}
+.hero .text-cta,.hero__film-link,body[data-mood="purple-hour"] .hero .text-cta,body[data-mood="purple-hour"] .hero__film-link{color:#f4e5e9;border-color:#96788f}
+.hero__film-link{flex-basis:100%;min-height:40px;margin-top:-6px}
+.hero__film-link span{display:grid;place-items:center;width:26px;height:26px;border:1px solid #b695ad;border-radius:50%;font-size:9px}
+.hero .mood-switch{margin:16px 0 0;background:#ffffff0c;border-color:#ffffff30}
+.hero .mood-switch__button{color:#dfc8dc;min-height:37px}
+.hero .mood-switch__button.is-active{background:#e8c8dc;color:#302039}
+.hero__edition,.hero__bottomline,body[data-mood="purple-hour"] .hero__edition,body[data-mood="purple-hour"] .hero__bottomline{color:#d8bdd4;border-color:#ffffff28}
+.hero__edition{margin-top:24px;padding-top:14px;letter-spacing:.1em}
+.hero__bottomline{padding:13px 0 17px}
+.hero__visual{height:clamp(480px,45vw,610px);display:block;isolation:isolate;min-width:0}
+.hero__halo,body[data-mood="purple-hour"] .hero__halo{inset:0;background:#473448;border:1px solid #ffffff1c;box-shadow:none}
+.hero__atmosphere{position:absolute;inset:0 auto 0 0;width:69%;height:100%;object-fit:cover;object-position:42% 50%;border-radius:2px}
+.hero__product,body[data-mood="purple-hour"] .hero__product{position:absolute;right:0;top:11%;height:74%;width:54%;margin:0;transform:none;border:5px solid #f6eee2;border-radius:2px;box-shadow:0 22px 48px #170d1b65;background:#eee5d9;z-index:1}
+.hero__product img,body[data-mood="purple-hour"] .hero__product img.hero__photo-night{height:100%;width:100%;object-fit:contain;object-position:center;transform:none;background:#eee5d9}
+.hero__visual-caption{position:absolute;left:0;bottom:0;width:46%;padding:22px 18px;background:linear-gradient(transparent,#201720d9);font-size:10px;font-weight:700;line-height:1.7;color:#fff8ed;letter-spacing:.13em}
+.hero__photo-tag,body[data-mood="purple-hour"] .hero__photo-tag{position:absolute;left:auto;right:0;top:87%;bottom:auto;width:54%;min-width:0;max-width:none;padding:0 3px;background:none;border:0;box-shadow:none;color:#f6e8ec;transform:none;gap:3px}
+.hero__photo-tag-small{font-size:9px;color:#e2c598;letter-spacing:.09em}
+.hero__photo-tag strong,body[data-mood="purple-hour"] .hero__photo-tag strong{font:500 clamp(16px,1.8vw,25px)/1.2 var(--display);color:#fff7ef}
+body[data-mood="purple-hour"] .hero{background:#231728}
+body[data-mood="purple-hour"] .hero__atmosphere{filter:brightness(.87)}
+/* A magazine-like photographic collection, followed by the full accessible menu. */
+.intro{padding-block:clamp(50px,7vw,100px)}
+.intro__heading{padding-bottom:30px}
+.intro__star{display:none}
+.intro__aside p{font-size:15px;line-height:1.7}
+.intro .feature-edit{border-top:1px solid #ddd1cc;margin:0 0 60px;padding-top:25px}
+.feature-edit .editorial-look__intro{grid-template-columns:minmax(0,.85fr) minmax(0,1.3fr) minmax(0,.8fr);align-items:end;gap:20px}
+.feature-edit .editorial-look__intro h3{font-size:clamp(29px,3.5vw,51px);line-height:1.06}
+.feature-edit .editorial-look__photos{gap:14px}
+.feature-edit .editorial-look__photos button{background:#ede4da;border:1px solid #e4d8d0;border-radius:0}
+.feature-edit .editorial-look__photos img{width:100%;aspect-ratio:4/4.8;object-fit:contain;background:#eae1d6}
+.feature-edit .editorial-look__photos span{min-height:62px;align-items:center;padding:14px 16px;font-size:13px;line-height:1.4;background:#f7f0e8}
+.feature-edit .editorial-look__photos b{margin-left:8px}
+.feature-edit .editorial-look__photos button:hover{border-color:#8d6a88}
+.signature-menu.flavor-rail{margin-bottom:38px}
+.menu-detail-heading{border-top:1px solid #ddd1cc;padding-top:8px}
+.showcase{border-color:#ded2cb}
+.showcase__main h3{font-size:clamp(45px,5.2vw,80px);line-height:1.03}
+.trade-feature{padding:clamp(36px,5vw,70px) 0;background:#e9dce7;border-block:1px solid #ddcbd8;color:#38253d}
+.trade-feature__inner{display:grid;grid-template-columns:1fr minmax(0,.7fr);gap:48px;align-items:center}
+.trade-feature h2{font:500 clamp(39px,5vw,73px)/1.03 var(--display);letter-spacing:-.045em;margin:15px 0 0}
+.trade-feature h2 em{font-weight:500;color:#775278}
+.trade-feature__inner>div:last-child>p{font-size:15px;line-height:1.75;margin:0 0 20px}
+body[data-mood="purple-hour"] .feature-edit,body[data-mood="purple-hour"] .menu-detail-heading{border-color:#62495e}
+body[data-mood="purple-hour"] .feature-edit .editorial-look__photos button{border-color:#62495e;background:#332537}
+body[data-mood="purple-hour"] .feature-edit .editorial-look__photos span{background:#332537;color:#f6e7ef}
+body[data-mood="purple-hour"] .trade-feature{background:#3d2b42;border-color:#62495e;color:#f8e9ef}
+body[data-mood="purple-hour"] .trade-feature h2 em{color:#e4b8dd}
+body[data-mood="purple-hour"] .trade-feature .kicker{color:#e2c4db}
+@media(max-width:1000px){.feature-edit .editorial-look__intro{grid-template-columns:1fr 1.5fr}.feature-edit .editorial-look__intro p{grid-column:2}.hero__grid{gap:24px}.hero__visual{height:clamp(420px,52vw,530px)}}
+@media(max-width:760px){
+ .hero__grid{grid-template-columns:1fr;gap:22px;padding-block:29px 18px}
+ .hero h1{margin:16px 0 17px}
+ .hero__big,body[data-mood="purple-hour"] .hero__big{font-size:clamp(82px,24vw,130px)}
+ .hero__script,body[data-mood="purple-hour"] .hero__script{font-size:clamp(36px,10vw,55px);margin-top:7px;max-width:10em}
+ .hero__lead,body[data-mood="purple-hour"] .hero__lead{font-size:14px;margin-bottom:16px}
+ .hero .btn--purple{min-height:48px}
+ .hero__actions{gap:10px 15px}
+ .hero__film-link{margin-top:0;min-height:35px}
+ .hero .mood-switch{margin-top:12px}
+ .hero__visual{height:auto;aspect-ratio:1 / 1.08;margin:0 0 8px}
+ .hero__product,body[data-mood="purple-hour"] .hero__product{top:8%;height:77%;width:56%;border-width:3px}
+ .hero__photo-tag,body[data-mood="purple-hour"] .hero__photo-tag{width:56%;top:87%;right:0;padding:0 2px}
+ .hero__photo-tag-small{font-size:8px}
+ .hero__photo-tag strong,body[data-mood="purple-hour"] .hero__photo-tag strong{font-size:clamp(14px,4vw,20px)}
+ .hero__visual-caption{width:44%;padding:14px 10px;font-size:8px;letter-spacing:.08em}
+ .intro__aside p{font-size:13px}
+ .intro .feature-edit{margin-bottom:34px;padding-top:18px}
+ .feature-edit .editorial-look__intro{display:block}
+ .feature-edit .editorial-look__intro h3{font-size:34px}
+ .feature-edit .editorial-look__photos{gap:11px}
+ .feature-edit .editorial-look__photos button{flex:0 0 min(69vw,290px)}
+ .feature-edit .editorial-look__photos span{padding:12px;min-height:55px;font-size:12px}
+ .showcase__main h3{font-size:clamp(38px,10.4vw,62px)}
+ .trade-feature__inner{grid-template-columns:1fr;gap:18px}
+ .trade-feature__inner>div:last-child>p{font-size:13px}
+}
+@media(prefers-reduced-motion:reduce){.feature-edit .editorial-look__photos img{transition:none}}
