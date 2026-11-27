@@ -108,10 +108,11 @@ function setFamily(family){
  if(!flavors.some(f=>f.family===family))return;
  activeFamily=family;
  const single=indices().length<2;
- rail.hidden=single;
+ rail.hidden=false;
  $('.showcase__bottom').hidden=single;
  groups.forEach(b=>{const active=b.dataset.family===family;b.classList.toggle('is-active',active);b.setAttribute('aria-pressed',String(active))});
- buttons.forEach((b,i)=>{b.hidden=flavors[i].family!==family});
+ buttons.forEach(b=>{b.hidden=false});
+ $('.menu-family').forEach(el=>el.classList.toggle('is-current',el.dataset.menuFamily===family));
  if(flavors[selected].family!==family)choose(indices()[0]);else choose(selected);
 }
 function setPackView(kind){
@@ -123,12 +124,18 @@ function setPackView(kind){
 }
 $('#pack-carton').addEventListener('click',()=>setPackView('carton'));
 $('#pack-sachet').addEventListener('click',()=>setPackView('sachet'));
-$$('[data-feature-flavor]').forEach(b=>b.addEventListener('click',()=>{const i=Number(b.dataset.featureFlavor);setFamily(flavors[i].family);choose(i);document.querySelector('.showcase').scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'})}));
-buttons.forEach((button,index)=>button.addEventListener('click',()=>choose(index)));
-groups.forEach(button=>button.addEventListener('click',()=>setFamily(button.dataset.family)));
+function openFlavor(i){
+ if(!flavors[i])return;
+ if(activeFamily!==flavors[i].family)setFamily(flavors[i].family);
+ choose(i);title.focus({preventScroll:true});
+ select.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
+}
+$('[data-feature-flavor]').forEach(b=>b.addEventListener('click',()=>openFlavor(Number(b.dataset.featureFlavor))));
+buttons.forEach((button,index)=>button.addEventListener('click',()=>openFlavor(index)));
+groups.forEach(button=>button.addEventListener('click',()=>{const i=flavors.findIndex(f=>f.family===button.dataset.family);openFlavor(flavors[selected].family===button.dataset.family?selected:i)}));
 const rotate=step=>{const list=indices();if(list.length<2)return;const pos=list.indexOf(selected);choose(list[(pos+step+list.length)%list.length])};
 $('#prev-flavor').addEventListener('click',()=>rotate(-1));$('#next-flavor').addEventListener('click',()=>rotate(1));
-rail.addEventListener('keydown',e=>{if(indices().length<2||!['ArrowRight','ArrowLeft'].includes(e.key))return;e.preventDefault();rotate(e.key==='ArrowRight'?1:-1);buttons[selected].focus()});
+rail.addEventListener('keydown',e=>{const current=buttons.indexOf(e.target);if(current<0||!['ArrowRight','ArrowLeft','ArrowDown','ArrowUp','Home','End'].includes(e.key))return;e.preventDefault();const next=e.key==='Home'?0:e.key==='End'?buttons.length-1:(current+(['ArrowRight','ArrowDown'].includes(e.key)?1:-1)+buttons.length)%buttons.length;buttons[next].focus()});
 add.addEventListener('click',()=>{
  const pos=saved.indexOf(selected);
  if(pos>=0){saved.splice(pos,1);tastingStatus.textContent='Removed '+flavors[selected].name+'.'}
@@ -145,9 +152,9 @@ function setMood(mood){
  const active=mood==='purple-hour'?'purple-hour':'morning';document.body.dataset.mood=active;
  moodButtons.forEach(b=>{const on=b.dataset.moodChoice===active;b.classList.toggle('is-active',on);b.setAttribute('aria-pressed',String(on))});
  $('#hero-strap').textContent=active==='morning'?'A FILIPINO FAVORITE, REIMAGINED':'AN EVENING MOOD, A FAMILIAR FLAVOR';
- $('#hero-script').textContent=active==='morning'?'the everyday, elevated.':'after hours.';
- $('#hero-lead').textContent=active==='morning'?'Inspired by the flavors Filipinos love. A collection made to discover, one blend at a time.':'Some moments call for something different. Explore nine flavors in a richer evening atmosphere.';
- $('#photo-tag').textContent=active==='morning'?'START HERE':'THE EVENING EDIT';
+ $('#hero-script').textContent=active==='morning'?'beautifully different.':'a different kind of evening.';
+ $('#hero-lead').textContent=active==='morning'?'A Filipino favorite, expressed in nine distinctive café-inspired beverages. Discover the Euro Blend collection.':'Discover the same Euro Blend collection in a richer evening atmosphere.';
+ $('#photo-tag').textContent=active==='morning'?'SIGNATURE COLLECTION':'THE EVENING EDIT';
  $('#photo-feature').textContent=active==='morning'?'Ube Latte — Deep Ube':'Ube Criollo with Salted Caramel';
  $('#browser-theme-color').setAttribute('content',active==='morning'?'#faf6ed':'#18131b');
  if(active==='purple-hour'){$('.hero__photo-night').loading='eager'}
