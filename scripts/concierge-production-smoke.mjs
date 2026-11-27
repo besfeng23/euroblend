@@ -1,0 +1,50 @@
+import { chromium } from 'playwright';
+import assert from 'node:assert/strict';
+const base='https://euroblend.vercel.app';
+const browser=await chromium.launch({headless:true});
+try {
+ const check=await fetch(base+'/api/concierge',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:'What are the variants?',language:'en'})});
+ assert.equal(check.status,200);
+ const catalog=await check.json();
+ for(const name of ['Ube Macchiato','Ube Criollo','Ube Criollo Salted Caramel','Ube Salted Caramel','Ube Vanilla','Ube Classic','Ube Latte','Ube Milk'])assert.ok(catalog.reply.includes(name),name);
+ assert.match(catalog.reply,/eight variants/);
+ assert.match(catalog.reply,/Light Lavender identifies Ube Milk/);
+ assert.ok(['guide','ai'].includes(catalog.mode));
+ const invalid=await fetch(base+'/api/concierge',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:'x'.repeat(601)})});
+ assert.equal(invalid.status,400);
+ console.log('Production API: valid POST, eight variants, invalid input rejected; mode='+catalog.mode);
+ for(const width of [320,390,768,1440]){
+  const page=await browser.newPage({viewport:{width,height:width<768?780:900},deviceScaleFactor:1});
+  const errors=[];page.on('pageerror',e=>errors.push(e.message));
+  await page.goto(base+'/',{waitUntil:'domcontentloaded'});
+  await page.locator('.eb-launch').click();
+  await page.locator('#eb-panel').waitFor({state:'visible'});
+  const box=await page.locator('#eb-panel').boundingBox();assert.ok(box&&box.x>=-1&&box.y>=-1&&box.x+box.width<=width+1,'panel fits viewport '+width);
+  await page.getByRole('button',{name:'Explore the flavors',exact:true}).click();
+  await page.locator('.eb-assistant').last().getByText(/Light Lavender identifies Ube Milk/).waitFor({timeout:15000});
+  assert.equal(await page.locator('#eb-mode').textContent(),catalog.mode==='ai'?'AI-assisted · verified answers':'Verified product guide');
+  await page.getByRole('button',{name:'Filipino / Taglish'}).click();
+  await page.waitForTimeout(900);
+  await page.locator('#eb-question').fill('Magkano ang Ube Latte?');
+  await page.getByRole('button',{name:'Send question'}).click();
+  await page.locator('.eb-assistant').last().getByText(/Hindi pa nakalathala/).waitFor({timeout:15000});
+  await page.getByRole('button',{name:'Clear chat'}).click();
+  assert.equal(await page.locator('.eb-user').count(),0);
+  await page.route('**/api/concierge',r=>r.abort());
+  await page.waitForTimeout(900);
+  await page.locator('#eb-question').fill('FDA registered?');
+  await page.getByRole('button',{name:'Send question'}).click();
+  await page.locator('.eb-assistant').last().getByText(/Hindi pa kumpirmado/).waitFor();
+  assert.match(await page.locator('#eb-mode').textContent(),/offline/);
+  await page.keyboard.press('Escape');
+  assert.equal(await page.locator('#eb-panel').isVisible(),false);
+  await page.unroute('**/api/concierge');
+  await page.goto(base+'/trade',{waitUntil:'domcontentloaded'});
+  await page.locator('.eb-launch').click();
+  await page.getByRole('button',{name:'Become a reseller',exact:true}).click();
+  await page.locator('.eb-assistant').last().getByText(/welcomes enquiries/).waitFor({timeout:15000});
+  assert.deepEqual(errors,[],'uncaught JS errors at '+width);
+  console.log('Browser '+width+'px: home/trade, catalog, Taglish pricing, clear, offline fallback, Escape, no uncaught errors');
+  await page.close();
+ }
+}finally{await browser.close()}
