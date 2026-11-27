@@ -23,7 +23,7 @@ trade:{en:'Euro Blend welcomes enquiries from cafés, hotels, restaurants, retai
 safety:{en:'FDA registration, shelf life, storage requirements and other certifications have not been confirmed in our published information. Request the current product label and relevant documentation from the team.',fil:'Hindi pa kumpirmado sa published information ang FDA registration, shelf life, storage requirements at certifications. Humingi ng kasalukuyang product label at dokumentasyon sa team.',action:'contact'},
 contact:{en:'Contact Euro Blend through its official Facebook page for a human representative. The website lists Parañaque, Metro Manila, Philippines. Business hours and exact pickup arrangements are not confirmed.',fil:'Makipag-ugnayan sa official Facebook page ng Euro Blend para sa human representative. Nasa website ang Parañaque, Metro Manila, Philippines. Hindi pa kumpirmado ang business hours at pickup arrangements.',action:'contact'},
 brand:{en:'Euro Blend presents a Filipino ube beverage collection of eight variants. Explore the range and enquire directly with the team for current product information.',fil:'Ang Euro Blend ay may koleksiyon ng walong Filipino ube beverage variants. Tingnan ang collection at magtanong sa team para sa kasalukuyang product information.',action:'collection'},
-unknown:{en:'I can help with Euro Blend products, preparation, orders and business enquiries. I do not have a confirmed answer to that specific question. Our team can assist you directly.',fil:'Makakatulong ako sa Euro Blend products, preparation, orders at business enquiries. Wala akong kumpirmadong sagot sa partikular na tanong na iyon. Makakatulong ang team nang direkta.',action:'contact'}
+unknown:{en:'I can help with Euro Blend products, preparation, orders and business enquiries. I do not have a confirmed answer to that specific question. Our team can assist you directly.',fil:'Makakatulong ako sa Euro Blend products, preparation, orders at business enquiries. Wala akong kumpirmadong sagot sa partikular na tanong na iyon. Makakatulong ang team nang direkta.',action:null}
 };
 const rules=[
 ['identity',/\b(are you (?:a )?(?:bot|ai|robot|human)|who are you|totoong tao|bot ka ba)\b/i],
@@ -66,6 +66,8 @@ function respond(message,preferred,previous={},selected){
  const local=classify(q);let topics=selected||local;
  // Social turns should never be routed to brand copy or an irrelevant sales link.
  if(['greeting','thanks','identity'].includes(local[0]))topics=local;
+ if(topics[0]==='unknown'&&named)topics=[prior.topic==='recommend'?'recommend':'catalog'];
+ if(named&&prior.topic==='recommend'&&topics.every(x=>['catalog','milk','unknown'].includes(x)))topics=['recommend'];
  if(topics[0]==='unknown'&&/^(?:what about|how about|and|paano naman|eh|ito|iyon|that one)\b/i.test(q)&&prior.topic)topics=[prior.topic];
  if(named&&prior.topic&&['price','order','prepare','delivery','pack','ingredients','allergens','nutrition','taste'].includes(prior.topic)&&topics.every(x=>['catalog','milk','unknown'].includes(x))&&!/\b(what is|ano ang|variants|flavou?rs|list|collection|menu)\b/i.test(q))topics=[prior.topic];
  // Avoid mixing broad product-name matches with the specific customer question.
