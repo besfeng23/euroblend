@@ -112,7 +112,7 @@ function setFamily(family){
  $('.showcase__bottom').hidden=single;
  groups.forEach(b=>{const active=b.dataset.family===family;b.classList.toggle('is-active',active);b.setAttribute('aria-pressed',String(active))});
  buttons.forEach(b=>{b.hidden=false});
- $('.menu-family').forEach(el=>el.classList.toggle('is-current',el.dataset.menuFamily===family));
+ $$('.menu-family').forEach(el=>el.classList.toggle('is-current',el.dataset.menuFamily===family));
  if(flavors[selected].family!==family)choose(indices()[0]);else choose(selected);
 }
 function setPackView(kind){
@@ -130,7 +130,7 @@ function openFlavor(i){
  choose(i);title.focus({preventScroll:true});
  select.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
 }
-$('[data-feature-flavor]').forEach(b=>b.addEventListener('click',()=>openFlavor(Number(b.dataset.featureFlavor))));
+$$('[data-feature-flavor]').forEach(b=>b.addEventListener('click',()=>openFlavor(Number(b.dataset.featureFlavor))));
 buttons.forEach((button,index)=>button.addEventListener('click',()=>openFlavor(index)));
 groups.forEach(button=>button.addEventListener('click',()=>{const i=flavors.findIndex(f=>f.family===button.dataset.family);openFlavor(flavors[selected].family===button.dataset.family?selected:i)}));
 const rotate=step=>{const list=indices();if(list.length<2)return;const pos=list.indexOf(selected);choose(list[(pos+step+list.length)%list.length])};
