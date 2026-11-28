@@ -61,6 +61,7 @@ function language(value){return value==='fil'?'fil':'en'}
 function inferLanguage(message,preferred){if(preferred==='fil')return 'fil';return /\b(?:magkano|presyo|paano|saan|ano|alin|gusto|meron|mayroon|salamat|po|opo|kumusta|kamusta|timpla\w*|bibili|mabibili)\b/i.test(message)?'fil':'en'}
 function contextOf(value){
  const ctx={product:products.includes(value?.product)?value.product:null,topic:Object.prototype.hasOwnProperty.call(entries,value?.topic)?value.topic:null};
+ if(value?.greeted===true)ctx.greeted=true;
  if(['personal','business'].includes(value?.goal))ctx.goal=value.goal;
  if(Number.isSafeInteger(value?.quantity)&&value.quantity>=1&&value.quantity<=10000)ctx.quantity=value.quantity;
  if(['vanilla','salted caramel','classic ube','café-inspired'].includes(value?.preference))ctx.preference=value.preference;
@@ -97,6 +98,10 @@ function respond(message,preferred,previous={},selected){
  if(topics.length>1&&topics.some(x=>!['catalog','brand','milk'].includes(x)))topics=topics.filter(x=>!['catalog','brand','milk'].includes(x));
  const result=answer(topics,lang);let reply=result.reply;
  const topic=result.topics[0];
+ if(topic==='greeting'){
+  if(prior.greeted)reply=fil?'Hello! Kumusta? Ano ang maitutulong ko sa iyo?':'Hello! Good to hear from you. What can I help you with?';
+  next.greeted=true;
+ }
  if(topic==='price')reply=fil?(product?'Para sa '+product+', wala pa akong kumpirmadong presyo. ':'Wala pa akong kumpirmadong price list. ')+'Ilang box ang kailangan mo? Makakahingi ka ng quotation sa team.':(product?'I don’t have a confirmed price for '+product+' yet. ':'I don’t have the current price list yet. ')+'How many boxes are you looking for? Our team can confirm a quotation.';
  if(topic==='recommend'){
   if(/\b(vanilla|salted caramel|macchiato|criollo|latte|ube milk|classic|light lavender)\b/i.test(q)&&named)reply=fil?'Kung '+named+' ang gusto mong subukan, magandang simulan sa variant na iyon. Gusto mo bang malaman kung paano ito i-order?':'If '+named+' is the flavor direction you like, that’s a good place to start. Would you like help ordering it?';
